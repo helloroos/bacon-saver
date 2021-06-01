@@ -10,7 +10,13 @@ const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 
 // look into past projects 
 function load() {
+    // Always checks for current date
     const dt = new Date();
+
+    // need to check what nav is
+    if (nav !== 0) {
+        dt.setMonth(new Date().getMonth() + nav);
+    }
 
     const day = dt.getDate();
     const month = dt.getMonth();
@@ -28,8 +34,14 @@ function load() {
         day: 'numeric' // change to long?
     });
     const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
+
+    document.getElementById('monthDisplay').innerText = 
+        `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
     
-    for (let i = 0; i <= paddingDays + daysInMonth; i++) {
+    // wipes out everything in the cal
+    calendar.innerHTML = '';
+    
+        for (let i = 0; i <= paddingDays + daysInMonth; i++) {
         const daySquare = document.createElement('div');
         daySquare.classList.add('day');
         
@@ -39,6 +51,9 @@ function load() {
                 console.log('click');
             })
             // daySquare.addEventListener('click', () => console.log('click'))
+            if (i - paddingDays === day && nav === 0) {
+                daySquare.id = 'currentDay';
+            }
         } else {
             daySquare.classList.add('padding');
         }
@@ -46,4 +61,30 @@ function load() {
     }
 }
 
+// function initButtons() {
+//     document.getElementById('nextButton').addEventListener('click', () => {
+//         nav++;
+//         load();
+//     })
+//     document.getElementById('backButton').addEventListener('click', () => {
+//         nav--;
+//         load();
+//     })
+// }
+
+// initButtons();
+
+function initButtons() {
+    document.getElementById('nextButton').addEventListener('click', () => {
+        nav++;
+        load();
+    });
+
+    document.getElementById('backButton').addEventListener('click', () => {
+        nav--;
+        load();
+    });
+}
+
+initButtons();
 load();
