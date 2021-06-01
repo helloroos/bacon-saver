@@ -2,7 +2,7 @@ body {
   display: flex;
   margin-top: 50px;
   justify-content: center;
-  background-color: #FFFCFF;
+  background-color: white;
 }
 button {
   width: 75px;
@@ -75,7 +75,7 @@ button {
 }
 .padding {
   cursor: default !important;
-  background-color: #FFFCFF !important;
+  background-color: #f0f0f0 !important;
   box-shadow: none !important;
 }
 #newEventModal, #deleteEventModal {

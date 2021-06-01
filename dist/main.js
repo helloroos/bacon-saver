@@ -22,7 +22,7 @@ function load() {
     const month = dt.getMonth();
     const year = dt.getFullYear();
 
-    const firstDayOfMonth = new Date(year, month, 1)
+    const firstDayOfMonth = new Date(year, month, 1);
     // Need to understand this better
     // gives us last date in jan (31)
     const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -33,6 +33,7 @@ function load() {
         month: 'numeric', // change to long?
         day: 'numeric' // change to long?
     });
+    
     const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
 
     document.getElementById('monthDisplay').innerText = 
@@ -41,23 +42,23 @@ function load() {
     // wipes out everything in the cal
     calendar.innerHTML = '';
     
-        for (let i = 0; i <= paddingDays + daysInMonth; i++) {
-        const daySquare = document.createElement('div');
-        daySquare.classList.add('day');
-        
-        if (i > paddingDays) {
-            daySquare.innerText = i - paddingDays;
-            daySquare.addEventListener('click', () => {
-                console.log('click');
-            })
-            // daySquare.addEventListener('click', () => console.log('click'))
-            if (i - paddingDays === day && nav === 0) {
-                daySquare.id = 'currentDay';
-            }
-        } else {
-            daySquare.classList.add('padding');
+    for (let i = 1; i <= paddingDays + daysInMonth; i++) {
+    const daySquare = document.createElement('div');
+    daySquare.classList.add('day');
+    
+    if (i > paddingDays) {
+        daySquare.innerText = i - paddingDays;
+        daySquare.addEventListener('click', () => {
+            console.log('click');
+        })
+        // daySquare.addEventListener('click', () => console.log('click'))
+        if (i - paddingDays === day && nav === 0) {
+            daySquare.id = 'currentDay';
         }
-        calendar.appendChild(daySquare)
+    } else {
+        daySquare.classList.add('padding');
+    }
+    calendar.appendChild(daySquare);
     }
 }
 

@@ -6,34 +6,50 @@ Users can create a plan, invite participants and set a date range that participa
 Visit the live link here.
 
 # Functionality and MVPs 
-### User Auth
-* Users can sign up, log in or demo the site
-* If logged in, users can log out
-
 ### Create a plan
-* Users can create a plan with a title and description
+* Users can create a plan with a title, description and a date range
+* Users can invite participants to their plan
 
-### Invite participants using Gmail API
-* Users can invite participants
-* Invited participants can fill in their availabilities 
+### Overlapping schedule
+* Participants can indicate their availability
+* Participants can get an overview indicating when most people are available
 
-### Connect to Google Calendar API
+### Google APIs
+* Users can invite participants using the Gmail API
 * Users can connect to their Google Calendar
+* Backend data is managed with Google Firebase API
 
 # Wireframes 
+https://wireframe.cc/pro/pp/05b59614f446539
+
 # Architecture and Technology 
+* Vanilla Javascript is used for the code structure
+* Gmail API is used for inviting participants
+* Google Calendar API is used for connecting to participants' calendars
+* Google Firebase is used for backend functionality
+
 # Implementation Timeline 
 ### Monday
 * Project set up
 * Proposal submission
-* User Auth 
-* Plan creation
-### Tuesday
 * Calendar set up
-* Google calendar API connection
+
+### Tuesday
+* Plan creation
+* Date range functionlity
+* Firebase connection
+
 ### Wednesday
+* Inviting participants
+* Persisting data
+* Final plan layout
+
 ### Thursday
+* Styling and debugging
+
 ### Friday
+* Presentations
+
 # Bonus Features
 * Participants can receive reminders to fill in their availability
 * Users can set a deadline for participants to respond
