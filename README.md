@@ -1,56 +1,54 @@
+# Saved Your Bacon
 # Background and Overview 
-The MVP (Most Valuable Planner) is a tool that helps groups to plan around dates by visualizing overlapping schedule availabilities. 
+20% of the US waste stream is food waste. Most landfills are so tightly packed, they create an environment free of oxygen, which makes it very difficult (and sometimes impossible) for food items  to biodegrade properly. Instead, these items degrade without oxygen and methane gas is released as a byproduct. Methane is anywhere from 20-150 times more potent of a greenhouse gas than carbon dioxide over a 100 year timeframe, which is why minimizing food waste is so crucial.
 
-Users can create a plan, invite participants and set a date range that participants can choose from. Invited participants can indicate their availability from the list of dates given. 
+Saved Your Bacon is a recipe tool that allows users to browse for recipes based on food items they have at home that might be close to perishing. 
 
 Visit the live link here.
 
 # Functionality and MVPs 
-### Create a plan
-* Users can create a plan with a title, description and a date range (plan creation lives in a modal)
-* Users can invite participants to their plan
+### Recipes
+* Users can search for recipes based on ingredients
+* Users can exclude ingredients from the search result
+* Users can filter by diet
 
-### Overlapping schedule
-* Participants can indicate their availability
-* Participants can get an overview indicating when most people are available
+### Ingredients
+* Users can convert measurements
+* Users can find ingredient substitutions
 
-### Google APIs
-* Users can invite participants using the Gmail API
-* Users can connect to their Google Calendar
-* Backend data is managed with Google Firebase API
+### Food item storage
+* Users can get information on how to store perishables
 
-# Wireframes 
-https://wireframe.cc/pro/pp/05b59614f446539
+### APIs
+* Spoonacular API integration
+* Users can add recipes to their calendar
 
 # Architecture and Technology 
 * Vanilla Javascript is used for the code structure
-* Gmail API is used for inviting participants
-* Google Calendar API is used for connecting to participants' calendars
-* Google Firebase is used for backend functionality
+* Spoonacular API is used for recipe and ingredient data
+* Google Calendar API is used to add recipes to a user's calendar
 
 # Implementation Timeline 
 ### Monday
 * Project set up
 * Proposal submission
-* Calendar set up
 
 ### Tuesday
-* Plan creation
-* Date range functionlity
-* Firebase connection
+* Search
+* Connect to Spoonacular API
+* 
 
 ### Wednesday
-* Inviting participants
-* Persisting data
-* Final plan layout
+* Connect to Google Calendar API
+* Food item storage
 
 ### Thursday
 * Styling and debugging
+* Work on bonus features if possible
 
 ### Friday
 * Presentations
 
 # Bonus Features
-* Participants can receive reminders to fill in their availability
-* Users can set a deadline for participants to respond
-* Users are prompted to sign up or sign in when creating a plan while not logged in
+* Users can generate a shopping list
+* Users can generate a meal plan
