@@ -1,15 +1,20 @@
 {
+  "name": "js_project_skeleton",
+  "version": "1.0.0",
+  "description": "skeleton for new JS project",
+  "main": "index.js",
   "browserslist": [
     "last 1 version",
     "> 1%",
-    "maintained node versions",
     "not dead"
   ],
   "scripts": {
-    "serve": "NODE_ENV=development webpack-dev-server --config webpack.dev.js ",
+    "serve": "NODE_ENV=development webpack serve --config webpack.dev.js ",
     "watch": "NODE_ENV=development webpack --watch --config webpack.dev.js ",
     "build": "NODE_ENV=production webpack --config webpack.prod.js"
   },
+  "author": "mrcjbradley",
+  "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/plugin-proposal-optional-chaining": "^7.14.2",

@@ -5,7 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const outputDir = "./dist";
 
 module.exports = {
-    entry: path.resolve(__dirname, "src", "index.js"),
+    entry: path.resolve(__dirname, "dist", "main.js"),
+    // entry: path.resolve(__dirname, "src", "index.js"),
     output: {
         path: path.join(__dirname, outputDir),
         filename: "[name].js",
@@ -26,7 +27,7 @@ module.exports = {
                         exclude: /node_modules/,
                     }, // if we were using React.js, we would include "react"
                 },
-            },
+            },         
             {
                 test: /\.css$/,
                 use: [
@@ -73,7 +74,7 @@ module.exports = {
                     {
                         loader: "sass-loader",
                         options: {
-                            implementation: require('sass')
+                            implementation: require("sass"),
                         }
                     },
                     "postcss-loader",
@@ -92,4 +93,3 @@ module.exports = {
         require("autoprefixer"),
     ],
 };
-

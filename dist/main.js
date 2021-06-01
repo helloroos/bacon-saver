@@ -1,3 +1,5 @@
+import "./main.css";
+
 let nav = 0;
 let clicked = null;
 // let dateRange?
