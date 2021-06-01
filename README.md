@@ -7,7 +7,7 @@ Visit the live link here.
 
 # Functionality and MVPs 
 ### Create a plan
-* Users can create a plan with a title, description and a date range
+* Users can create a plan with a title, description and a date range (plan creation lives in a modal)
 * Users can invite participants to their plan
 
 ### Overlapping schedule
