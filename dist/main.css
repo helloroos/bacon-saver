@@ -42,7 +42,19 @@ section {
   margin-bottom: 30px;
 }
 
-form {
+.filter-options {
+  width: 100%;
+  border-radius: 8px;
+  background-color: rgb(37 37 37);
+  /* padding: 15px; */
+  overflow: hidden;
+}
+
+/* form {
+
+} */
+
+.search-input-div, .filter-input-div {
   width: 90%;
   max-width: 400px;
   margin: 20px auto;
@@ -50,7 +62,7 @@ form {
   border-radius: 4px;
 }
 
-form input {
+.searchQuery, .excludeQuery {
   width: 90%;
   background-color: transparent;
   padding: 10px;
