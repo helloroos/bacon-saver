@@ -15,7 +15,7 @@ const searchResultDiv = document.querySelector('.search-result');
 // MODAL ELEMENTS IN HTML FILE
 const viewRecipeModal = document.getElementById('view-recipe-modal');
 const modalBackdrop = document.getElementById('modal-backdrop');
-// const closeButton = document.querySelector('.close-btn');
+const modal = document.querySelector('.modal');
 const viewButton = document.querySelector('.view-btn');
 
 // GLOBAL CONSTANTS
@@ -64,7 +64,6 @@ async function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet)
     // console.log(data);
 
     const baseURL = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${type}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
-    console.log(baseURL);
     const response = await fetch(baseURL);
     const data = await response.json();
     generateHTML(data);
@@ -79,6 +78,15 @@ function openModal() {
 function closeModal() {
     viewRecipeModal.style.display = 'none';
     modalBackdrop.style.display = 'none';
+}
+
+window.addEventListener('click', clickOutside)
+
+function clickOutside(e) {
+    if (e.target == modal) {
+        viewRecipeModal.style.display = 'none';
+        modalBackdrop.style.display = 'none';
+    }
 }
 
 function generateHTML(results) {
@@ -101,11 +109,7 @@ function generateHTML(results) {
     // Add tooltip overlay
     filterOptions.innerHTML = `
     <div class="filter-options">
-        <select name="type" class="type">
-            <option disabled selected value> -- Type -- </option>
-            <option value="bitcoin">Bitcoin</option>
-        </select>
-    
+   
         <input type="checkbox" id="vegetarian" name="vegetarian" class="checkbox" value="">
         <label for="vegetarian">Vegetarian</label>
 
@@ -135,65 +139,51 @@ function generateHTML(results) {
 
         <input type="checkbox" id="whole-30" class="checkbox" value="whole%2030">
         <label for="whole-30">Whole 30</label>
+
+        <select name="type" class="type">
+            <option disabled selected value> -- Type -- </option>
+            <option value="bitcoin">Bitcoin</option>
+        </select>
         
         <button type="submit">Filter</button>
     </div>`;
 
     let generatedHTML = ``;
-    results.map(result => {
-        generatedHTML +=
-        //     `<div class="item">
-        //      <img src=${result.image}>
-        //      <div class="flex-container">
-        //          <h1 class="title">${result.title}</h1>
-        //          <a class="view-button" href=${result.sourceUrl}>View recipe</a>
-        //      </div>
-        //      <p class="item-data">Vegetarian Vegan Gluten Free</p>
-        // </div>`
-
-        `<div class="item">
+    results.forEach(result => {
+        const item = 
+        `<div id="item" class="item">
             <img src="https://www.rachelphipps.com/wp-content/uploads/2019/02/Salmon-Sashimi-Instagram.jpg">
             <div class="flex-container">
                 <h1 class="title">${result.name}</h1>
-                <a class="view-btn" onClick=${openModal()} href="#">View recipe</a>
             </div>
             <p class="item-data">Vegetarian Vegan Gluten Free</p>
         </div>`
-    })
-
-    // for (let i = 0; i < results.length; i++) {
-    //     const item = document.createElement('div');
-    //     item.classList.add('item');
-
-
-    //     if (i > paddingDays) {
-    //         item.innerText = i - paddingDays;
-    //         const eventForDay = events.find(e => e.date === dayString);
-
-    //         if (i - paddingDays === day && nav === 0) {
-    //             item.id = 'currentDay';
-    //         }
-
-    //         if (eventForDay) {
-    //             const eventDiv = document.createElement('div');
-    //             eventDiv.classList.add('event');
-    //             eventDiv.innerText = eventForDay.title;
-    //             item.appendChild(eventDiv);
-    //         }
-
-    //         item.addEventListener('click', () => openModal(dayString));
-    //     } else {
-    //         item.classList.add('padding');
-    //     }
-
-    //     calendar.appendChild(item);
-        
-    // }
+        searchResultDiv.addEventListener('click', (e) => {
+            if ((e.target && e.target.matches("div.item"))) {
+            // if ((e.target && e.target.matches("div.item")) || (e.target && e.target.matches("img")) || (e.target && e.target.matches("title")) || (e.target && e.target.matches("item-data"))) {
+                openModal();
+            }
+        })
+        generatedHTML += item;
+    });
+    // results.map(result => {
+        //     generatedHTML +=
+        //     //     `<div class="item">
+        //     //      <img src=${result.image}>
+        //     //      <div class="flex-container">
+        //     //          <h1 class="title">${result.title}</h1>
+        //     //          <a class="view-button" href=${result.sourceUrl}>View recipe</a>
+        //     //      </div>
+        //     //      <p class="item-data">Vegetarian Vegan Gluten Free</p>
+        //     // </div>`
+        // })
     searchResultDiv.innerHTML = generatedHTML;
 }
 
-// function initButtons() {
-//     document.querySelector('.close-btn').addEventListener('click', () => console.log('close'));
-// }
+function initButtons() {
+    document.querySelector('.close-btn').addEventListener('click', () => {
+        closeModal();
+    });
+}
 
-// initButtons();
+initButtons();
