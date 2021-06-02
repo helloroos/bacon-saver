@@ -96,6 +96,7 @@ searchForm.addEventListener('submit', (e) => {
     searchQuery = e.target.querySelector('.searchQuery').value;
     fetchSearchResults(searchQuery);
     // searchQuery = '';
+
     
 })
 
