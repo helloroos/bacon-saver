@@ -107,38 +107,19 @@ function generateHTML(results) {
     // </div>`;
 
     // Add tooltip overlay
+
+    const diets = ['Vegetarian', 'Vegan', 'Ketogenic', 'Lacto-Vegetarian', 'Ovo-Vegetarian', 'Gluten Free', 'Pescetarian', 'Paleo', 'Primal', 'Whole-30'];
+    let inputOptions = ``
+    for (const diet of diets) {
+        inputOptions += `
+        <input type="checkbox" id="${diet.toLowerCase()}" name="diets" class="checkbox" value="${diet.toLowerCase().replace('-', '%20')}">
+        <label for="${diet.toLowerCase()}">${diet}</label>`
+    }
+
     filterOptions.innerHTML = `
     <div class="filter-options">
-   
-        <input type="checkbox" id="vegetarian" name="vegetarian" class="checkbox" value="">
-        <label for="vegetarian">Vegetarian</label>
 
-        <input type="checkbox" class="checkbox" value="vegan">
-        <label for="vegan">Vegan</label>
-        
-        <input type="checkbox" class="checkbox" value="gluten%20free">
-        <label for="gluten-free">Gluten free</label>
-
-        <input type="checkbox" id="ketogenic" class="checkbox" value="ketogenic">
-        <label for="ketogenic">Ketogenic</label>
-
-        <input type="checkbox" id="lacto-vegetarian" class="checkbox" value="lacto%20vegetarian">
-        <label for="lacto-vegetarian">Lacto-vegetarian</label>
-
-        <input type="checkbox" id="ovo-vegetarian" class="checkbox" value="ovo%20vegetarian">
-        <label for="ovo-vegetarian">Ovo-vegetarian</label>
-
-        <input type="checkbox" id="pescetarian" class="checkbox" value="pescetarian">
-        <label for="pescetarian">Pescetarian</label>
-
-        <input type="checkbox" id="paleo" class="checkbox" value="paleo">
-        <label for="paleo">Paleo</label>
-
-        <input type="checkbox" id="primal" class="checkbox" value="primal">
-        <label for="primal">Primal</label>
-
-        <input type="checkbox" id="whole-30" class="checkbox" value="whole%2030">
-        <label for="whole-30">Whole 30</label>
+        ${inputOptions}
 
         <select name="type" class="type">
             <option disabled selected value> -- Type -- </option>
@@ -151,19 +132,16 @@ function generateHTML(results) {
     let generatedHTML = ``;
     results.forEach(result => {
         const item = 
-        `<div id="item" class="item">
+        `<button class="item">
             <img src="https://www.rachelphipps.com/wp-content/uploads/2019/02/Salmon-Sashimi-Instagram.jpg">
             <div class="flex-container">
                 <h1 class="title">${result.name}</h1>
             </div>
             <p class="item-data">Vegetarian Vegan Gluten Free</p>
-        </div>`
-        searchResultDiv.addEventListener('click', (e) => {
-            if ((e.target && e.target.matches("div.item"))) {
-            // if ((e.target && e.target.matches("div.item")) || (e.target && e.target.matches("img")) || (e.target && e.target.matches("title")) || (e.target && e.target.matches("item-data"))) {
-                openModal();
-            }
-        })
+            <div class="inner-detail" style="display: none">
+                <h1>${result.name}</h1>
+            </div>
+        </button>`
         generatedHTML += item;
     });
     // results.map(result => {
@@ -178,6 +156,19 @@ function generateHTML(results) {
         //     // </div>`
         // })
     searchResultDiv.innerHTML = generatedHTML;
+    for (const button of searchResultDiv.querySelectorAll('button')) {
+        
+        button.addEventListener('click', e => {
+            viewRecipeModal.querySelector('.modal-content-inner').innerHTML = button.querySelector('.inner-detail').innerHTML;
+            openModal();
+        });
+    }
+    // searchResultDiv.querySelectorAll('button').addEventListener('click', (e) => {
+    //     // if ((e.target && e.currentTarget.matches("div.item"))) {
+    //     // if ((e.target && e.target.matches("div.item")) || (e.target && e.target.matches("img")) || (e.target && e.target.matches("title")) || (e.target && e.target.matches("item-data"))) {
+    //     openModal();
+    //     // }
+    // })
 }
 
 function initButtons() {
