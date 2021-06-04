@@ -30,7 +30,7 @@ section {
   display: flex;
   /* align-items: center; */
   justify-content: center;
-  padding: 20px 0;
+  /* padding: 20px 0; */
   /* padding: 100px 0; */
   /* background-color: rgb(26 26 27); */
   background-color: white;
@@ -230,7 +230,7 @@ form i {
 }
 
 #view-recipe-modal {
-  display: none;
+  display: block;
   z-index: 20;
   padding: 25px;
   background-color: #f4f4f4;
@@ -257,16 +257,22 @@ form i {
 
 footer {
   position: fixed;
-  left: 0;
+  /* left: 0; */
   bottom: 0;
-  width: 100%;
+  width: 90%;
   background-color: whitesmoke;
   color: gray;
   text-align: right;
   height: 30px;
+  margin-bottom: 15px;
 }
 
 footer p {
-  margin: 15px;
-  padding-bottom: 15px;
+  /* margin: 15px;
+  padding-bottom: 15px; */
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid lightgray;
+    padding: 15px;
+    overflow: hidden;
 }

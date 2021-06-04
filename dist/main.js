@@ -175,6 +175,7 @@ function generateHTML(results) {
         </div>`
         generatedHTML += item;
     });
+    
     searchResultDiv.innerHTML = generatedHTML;
 
     for (const item of searchResultDiv.querySelectorAll('item')) {
