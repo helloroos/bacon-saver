@@ -160,37 +160,39 @@ function generateHTML(results) {
                 <h1 class="title">${result.title}</h1>
             </div>
             <div class="inner-detail" style="display: none">
+                <span class="close-btn">&times;</span>
                 <h1>${result.title}</h1>
                 <p>${result.readyInMinutes} minutes</p>
                 <p>${result.servings} servings</p>
                 <img src=${result.image}>
-                <p>${result.summary} servings</p>
+                <p id="summary">${result.summary} servings</p>
                 <a href=${result.sourceUrl} target="_blank">View recipe</a>
                 <form>
-                    <input type="email">
-                    <button>Email recipe</button>
+                    <input type="email" id="email">
+                    <button id="email-button">Email recipe</button>
                 </form>
-                <button>Add to calendar</button>
+                <button id="calendar-button">Add to calendar</button>
             </div>
         </div>`
         generatedHTML += item;
     });
-    
+
     searchResultDiv.innerHTML = generatedHTML;
 
-    for (const item of searchResultDiv.querySelectorAll('item')) {
+    for (const item of searchResultDiv.querySelectorAll('.item')) {
         
         item.addEventListener('click', e => {
-            viewRecipeModal.querySelector('.modal-content-inner').innerHTML = button.querySelector('.inner-detail').innerHTML;
+            viewRecipeModal.querySelector('.modal-content-inner').innerHTML = item.querySelector('.inner-detail').innerHTML;
             openModal();
+            
+            document.querySelector('.close-btn').addEventListener('click', () => {
+                closeModal();
+            });
         });
     }
 }
 
-function initButtons() {
-    document.querySelector('.close-btn').addEventListener('click', () => {
-        closeModal();
-    });
-}
+// function initButtons() {
+// }
 
-initButtons();
+// initButtons();
