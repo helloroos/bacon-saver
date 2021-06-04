@@ -49,13 +49,16 @@ section {
   /* background-color: rgb(37 37 37); */
   /* border: 1px solid pink; */
   
-  /* width: 100%;
+  width: 100%;
   background-color: white;
   border-bottom: 1px solid lightgray;
   padding: 15px;
-  overflow: hidden; */
-  
-  margin-top: 50px;
+  overflow: hidden;
+}
+
+.inputs {
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: grid;
   grid-gap: 25px;
   grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));
@@ -79,8 +82,8 @@ section {
 }
 
 .searchQuery, .excludeQuery {
-  width: 90%;
-  max-width: 400px;
+  width: 100%;
+  /* max-width: 400px; */
   background-color: whitesmoke;
   /* background-color: transparent; */
   border-radius: 4px;
@@ -93,13 +96,20 @@ section {
 }
 
 .filter-options {
-  width: 90%;
+  /* width: 90%;
   max-width: 400px;
-  /* margin: 20px auto; */
   margin-top: 15px;
   border-radius: 4px;
-  color: gray;
+  color: gray; */
+  /* margin: 20px auto; */
   /* border: 1px solid red; */
+  
+  margin-top: 15px;
+  width: 100%;
+  display: grid;
+  grid-gap: 5px;
+  grid-template: auto / repeat(auto-fit, minmax(110px, 1fr));
+  color: gray;
 }
 
 /* .caption {
@@ -110,12 +120,30 @@ section {
   opacity: 1;
 } */
 
+.filter-select {
+  margin-top: 15px;
+}
+
 select {
   /* // appearance: none; */
   /* // display: block; */
-  border: 1px solid whitesmoke;
   /* width: 100%; */
   /* font-weight: bold; */
+  border: none;
+  background-color: whitesmoke;
+  color: gray;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+button#filter {
+    margin-left: 15px;
+    padding: 6px;
+    width: 103px;
+    color: gray;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 4px;
 }
 
 form i {

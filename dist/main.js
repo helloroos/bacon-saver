@@ -1,4 +1,5 @@
 import "./main.css";
+import gmail from './gmail'
 
 const regeneratorRuntime = require("regenerator-runtime");
 const app_key = require('../config/keys').app_key;
@@ -7,6 +8,7 @@ const searchForm = document.querySelector('.searchForm');
 const filterForm = document.querySelector('.filterForm');
 const filterInputDiv = document.querySelector('.filter-input-div');
 const filterOptions = document.querySelector('.filter-options');
+const filterSelect = document.querySelector('.filter-select');
 const searchResultDiv = document.querySelector('.search-result');
 
 const viewRecipeModal = document.getElementById('view-recipe-modal');
@@ -51,7 +53,7 @@ filterForm.addEventListener('submit', (e) => {
 })
 
 async function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
-    const baseURL =
+    let baseURL =
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`;
     if (excludeQuery) baseURL += `&excludeIngredients=${excludeQuery}`;
     if (type) baseURL += `&type=${type}`;
@@ -109,11 +111,16 @@ function generateHTML(results) {
     let checkboxOptions = ``
     for (const diet of diets) {
         checkboxOptions += `
-        <input type="checkbox" id="${diet[0].toLowerCase()}" name="diets" class="checkbox" value="${diet[0].toLowerCase().replace('-', '%20')}">
-        <label for="${diet[0].toLowerCase()}">${diet[0].replace('-', ' ')}</label>`
+        <label for="${diet[0].toLowerCase()}">
+            <input type="checkbox" id="${diet[0].toLowerCase()}" name="diets" class="checkbox" value="${diet[0].toLowerCase().replace('-', '%20')}">
+            ${diet[0].replace('-', ' ')}
+        </label>`
     }
 
+    filterOptions.innerHTML = `${checkboxOptions}`;
+
     const mealTypes = ['Main course', 'Side dish', 'Dessert', 'Appetizer', 'Salad', 'Bread', 'Breakfast', 'Soup', 'Beverage', 'Sauce', 'Marinade', 'Fingerfood', 'Snack', 'Drink'].sort();
+    
     let selectOptions = ``
     for (const mealType of mealTypes) {
         selectOptions += `
@@ -121,18 +128,16 @@ function generateHTML(results) {
         `
     }
 
-    filterOptions.innerHTML = `
-    <div class="filter-options">
+    let select = `
+        <div class="select-options">
+            <select name="type" class="type">
+                <option disabled selected value> Meal type </option>
+                ${selectOptions}
+            </select>
+            <button type="submit" id="filter">Filter</button>
+        </div>`
 
-        ${checkboxOptions}
-
-        <select name="type" class="type">
-            <option disabled selected value> Meal type </option>
-            ${selectOptions}
-        </select>
-        
-        <button type="submit">Filter</button>
-    </div>`;
+    filterSelect.innerHTML = `${select}`;
 
     let generatedHTML = ``;
     results.forEach(result => {
@@ -149,25 +154,32 @@ function generateHTML(results) {
         //     </div>
         // </button>`
         const item = 
-        `<button class="item">
+        `<div class="item">
             <img src=${result.image}>
             <div class="flex-container">
-            <h1 class="title">${result.title}</h1>
+                <h1 class="title">${result.title}</h1>
             </div>
             <div class="inner-detail" style="display: none">
                 <h1>${result.title}</h1>
-                <img src=${result.image}>
                 <p>${result.readyInMinutes} minutes</p>
                 <p>${result.servings} servings</p>
+                <img src=${result.image}>
+                <p>${result.summary} servings</p>
                 <a href=${result.sourceUrl} target="_blank">View recipe</a>
+                <form>
+                    <input type="email">
+                    <button>Email recipe</button>
+                </form>
+                <button>Add to calendar</button>
             </div>
-        </button>`
+        </div>`
         generatedHTML += item;
     });
     searchResultDiv.innerHTML = generatedHTML;
-    for (const button of searchResultDiv.querySelectorAll('button')) {
+
+    for (const item of searchResultDiv.querySelectorAll('item')) {
         
-        button.addEventListener('click', e => {
+        item.addEventListener('click', e => {
             viewRecipeModal.querySelector('.modal-content-inner').innerHTML = button.querySelector('.inner-detail').innerHTML;
             openModal();
         });
