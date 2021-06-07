@@ -1,5 +1,6 @@
 import "./main.css";
 import gmail from './gmail'
+const axios = require('axios').default;
 
 const regeneratorRuntime = require("regenerator-runtime");
 const app_key = require('../config/keys').app_key;
@@ -24,13 +25,21 @@ searchForm.addEventListener('submit', (e) => {
     fetchSearchResults(searchQuery);
 })
 
+// GET REQUEST
 async function fetchSearchResults(searchQuery) {
-    const baseURL =
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
-    const response = await fetch(baseURL);
-    const data = await response.json();
-    generateHTML(data.results);
-    console.log(data);
+    axios({
+        method: 'GET',
+        url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
+    })
+        .then(res => generateHTML(res.data.results))
+        .catch(err => console.log(err))
+
+    // const baseURL =
+    //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
+    // const response = await fetch(baseURL);
+    // const data = await response.json();
+    // generateHTML(data.results);
+    // console.log(data);
 
     // const baseURL = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${searchQuery}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
     // const response = await fetch(baseURL);
@@ -53,16 +62,29 @@ filterForm.addEventListener('submit', (e) => {
     fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet);
 })
 
+// GET REQUEST
 async function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
     let baseURL =
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`;
     if (excludeQuery) baseURL += `&excludeIngredients=${excludeQuery}`;
     if (type) baseURL += `&type=${type}`;
     if (diet) baseURL += `&diet=${diet}`;
-    const response = await fetch(baseURL);
-    const data = await response.json();
-    generateHTML(data.results);
-    console.log(data);
+    axios({
+        method: 'GET',
+        url: baseURL
+    })
+        .then(res => generateHTML(res.data.results))
+        .catch(err => console.log(err))
+
+    // let baseURL =
+    //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`;
+    // if (excludeQuery) baseURL += `&excludeIngredients=${excludeQuery}`;
+    // if (type) baseURL += `&type=${type}`;
+    // if (diet) baseURL += `&diet=${diet}`;
+    // const response = await fetch(baseURL);
+    // const data = await response.json();
+    // generateHTML(data.results);
+    // console.log(data);
 
     // const baseURL = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${type}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
     // const response = await fetch(baseURL);
