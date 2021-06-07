@@ -208,8 +208,8 @@ function generateHTML(results) {
             viewRecipeModal.querySelector('.modal-content-inner').innerHTML = item.querySelector('.inner-detail').innerHTML;
             openModal();
         });
-
-        document.querySelector('.close-btn').addEventListener('click', () => {
+        
+        document.querySelector('.modal-content-inner').querySelector('.close-btn').addEventListener('click', () => {
             console.log('Close');
             closeModal();
         });
