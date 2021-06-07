@@ -16,7 +16,7 @@
 
 // oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-// async function sendMail() {
+// export const gmail async function sendMail() {
 //     try {
 //         const accessToken = await oAuth2Client.getAccessToken();
 
@@ -55,5 +55,3 @@
 
 // sendMail().then(result => console.log('email sent', result))
 //     .catch(error => console.log(error.message));
-
-// export default gmail;

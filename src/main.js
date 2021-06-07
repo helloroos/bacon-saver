@@ -183,7 +183,6 @@ function generateHTML(results) {
                 <h1 class="title">${result.title}</h1>
             </div>
             <div class="inner-detail" style="display: none">
-                <span class="close-btn">&times;</span>
                 <h1>${result.title}</h1>
                 <p>${result.readyInMinutes} minutes</p>
                 <p>${result.servings} servings</p>
@@ -209,14 +208,14 @@ function generateHTML(results) {
             openModal();
         });
         
-        document.querySelector('.modal-content-inner').querySelector('.close-btn').addEventListener('click', () => {
-            console.log('Close');
-            closeModal();
-        });
     }
 }
 
-// function initButtons() {
-// }
+function initButtons() {
+    document.querySelector('.close-btn').addEventListener('click', () => {
+        console.log('Close');
+        closeModal();
+    });
+}
 
-// initButtons();
+initButtons();
