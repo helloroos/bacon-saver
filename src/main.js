@@ -17,6 +17,7 @@ const modal = document.querySelector('.modal');
 
 let searchQuery = '';
 
+
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     searchQuery = e.target.querySelector('.searchQuery').value;
