@@ -1,9 +1,8 @@
 import "./main.css";
 import gmail from './gmail'
-const axios = require('axios').default;
+import axios from "axios";
 
 const regeneratorRuntime = require("regenerator-runtime");
-const app_key = require('../config/keys').app_key;
 
 const searchForm = document.querySelector('.searchForm');
 const filterForm = document.querySelector('.filterForm');
@@ -18,7 +17,6 @@ const modal = document.querySelector('.modal');
 
 let searchQuery = '';
 
-
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     searchQuery = e.target.querySelector('.searchQuery').value;
@@ -29,10 +27,14 @@ searchForm.addEventListener('submit', (e) => {
 async function fetchSearchResults(searchQuery) {
     axios({
         method: 'GET',
-        url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
+        url: `/recipes/${searchQuery}`
     })
-        .then(res => generateHTML(res.data.results))
-        .catch(err => console.log(err))
+    .then(res => {
+        console.log(res);
+        generateHTML(res.data.results)
+    })
+    // .then(res => generateHTML(res.data.results))
+    .catch(err => console.log(err))
 
     // const baseURL =
     //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
