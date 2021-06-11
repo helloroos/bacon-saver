@@ -23,7 +23,7 @@ searchForm.addEventListener('submit', (e) => {
     fetchSearchResults(searchQuery);
 })
 
-// GET REQUEST
+// FIRST GET REQUEST
 async function fetchSearchResults(searchQuery) {
     axios({
         method: 'GET',
@@ -64,19 +64,29 @@ filterForm.addEventListener('submit', (e) => {
     fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet);
 })
 
-// GET REQUEST
+// SECOND GET REQUEST
 async function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
-    let baseURL =
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`;
-    if (excludeQuery) baseURL += `&excludeIngredients=${excludeQuery}`;
-    if (type) baseURL += `&type=${type}`;
-    if (diet) baseURL += `&diet=${diet}`;
     axios({
         method: 'GET',
-        url: baseURL
+        url: `/recipes/${searchQuery}/filter`,
+        params: {
+            excludeQuery: excludeQuery,
+            type: type,
+            diet: diet
+        }
     })
-        .then(res => generateHTML(res.data.results))
+        .then(res => {
+            console.log(res);
+            generateHTML(res.data.results)
+        })
         .catch(err => console.log(err))
+
+    // axios({
+    //     method: 'GET',
+    //     url: baseURL
+    // })
+    //     .then(res => generateHTML(res.data.results))
+    //     .catch(err => console.log(err))
 
     // let baseURL =
     //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`;

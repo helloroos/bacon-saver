@@ -16,10 +16,10 @@ app.get("/", (request, res) => {
     res.sendFile(path.join(__dirname, "./dist/index.html"));
 });
 
-// create route to get single book by its isbn
+// route to get recipes based on ingredient(s)
 app.get("/recipes/:query", (request, response) => {
     // make api call using axios
-    let searchQuery = request.params.query;
+    const searchQuery = request.params.query;
     axios({
         method: 'GET',
         url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
@@ -32,6 +32,26 @@ app.get("/recipes/:query", (request, response) => {
         //     console.log(results); // logs to server
         //     response.send(results); // sends to frontend
         // });
+});
+
+// route to get recipes based on filtered input
+app.get("/recipes/:query/filter", (request, response) => {
+    const searchQuery = request.params.query;
+    const excludeQuery = request.params.excludeQuery;
+    const type = request.params.type;
+    const diet = request.params.diet;
+    let baseURL =
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`;
+    if (excludeQuery) baseURL += `&excludeIngredients=${excludeQuery}`;
+    if (type) baseURL += `&type=${type}`;
+    if (diet) baseURL += `&diet=${diet}`;
+    axios({
+        method: 'GET',
+        url: baseURL
+    })
+        .then((res) => {
+            response.send(res.data);
+        })
 });
 
 app.listen(PORT, () => {
