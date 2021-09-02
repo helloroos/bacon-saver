@@ -1,5 +1,3 @@
-// import "./src/styling/main.scss"
-
 // frontend -- what is getting webpacked
 
 const express = require("express");
