@@ -1,6 +1,8 @@
-import "./main.css";
-import gmail from './gmail'
-import axios from "axios";
+// import "./main.css";
+// import gmail from './gmail'
+// import axios from "axios";
+const axios = require('axios').default;
+
 
 const regeneratorRuntime = require("regenerator-runtime");
 
@@ -10,7 +12,6 @@ const filterInputDiv = document.querySelector('.filter-input-div');
 const filterOptions = document.querySelector('.filter-options');
 const filterSelect = document.querySelector('.filter-select');
 const searchResultDiv = document.querySelector('.search-result');
-
 const viewRecipeModal = document.getElementById('view-recipe-modal');
 const modalBackdrop = document.getElementById('modal-backdrop');
 const modal = document.querySelector('.modal');

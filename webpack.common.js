@@ -24,6 +24,7 @@ module.exports = {
                     options: {
                         presets: ["@babel/preset-env"],
                         plugins: ["@babel/plugin-proposal-optional-chaining"],
+                        // plugins: ["@babel/plugin-proposal-optional-chaining", "@babel/plugin-transform-runtime"],
                         exclude: /node_modules/,
                     }, // if we were using React.js, we would include "react"
                 },
@@ -69,7 +70,9 @@ module.exports = {
                             publicPath: "../",
                         },
                     },
+                    // "style-loader",
                     "css-loader",
+                    // "sass-loader",
                     "resolve-url-loader",
                     {
                         loader: "sass-loader",

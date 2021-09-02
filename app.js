@@ -1,3 +1,5 @@
+// import "./src/styling/main.scss"
+
 // frontend -- what is getting webpacked
 
 const express = require("express");
@@ -12,14 +14,15 @@ const PORT = process.env.PORT || 8000; // process.env accesses heroku's environm
 
 app.use(express.static("dist"));
 
-app.get("/", (request, res) => {
-    res.sendFile(path.join(__dirname, "./dist/index.html"));
+app.get("/", (request, response) => {
+    // res.sendFile(path.join(__dirname, "./dist/index.html"));
+    response.sendFile(path.join(__dirname, "index.html"));
 });
 
 // route to get recipes based on ingredient(s)
-app.get("/recipes/:query", (request, response) => {
+app.get("/recipes/:searchQuery", (request, response) => {
     // make api call using axios
-    const searchQuery = request.params.query;
+    const searchQuery = request.params.searchQuery;
     axios({
         method: 'GET',
         url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
