@@ -1,8 +1,7 @@
-// import "./main.css";
+import "./styling/main.scss";
 // import gmail from './gmail'
 // import axios from "axios";
 const axios = require('axios').default;
-
 
 const regeneratorRuntime = require("regenerator-runtime");
 
