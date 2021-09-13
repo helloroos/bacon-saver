@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@500&display=swap');
+
 html {
   padding: 0;
   margin: 0;
@@ -8,6 +10,13 @@ html {
   min-height: 100%;
   font-family: 'Roboto', arial, sans-serif;
   font-size: 14px;
+
+  head {
+
+    #favicon {
+      border-radius: 50%;
+    }
+  }
 
   body {
 
@@ -19,18 +28,22 @@ html {
     #outer-container {
 
       #inner-container {
+        
+        .header-links, .footer-links {
+          justify-self: center;
+          align-self: center;
+          text-transform: capitalize;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
 
         header {
           display: grid;
           grid-template-columns: 1fr 70px 70px 70px 70px;
           grid-template-rows: 50px;
           grid-template-areas: ". github linkedin resume portfolio";
-
-          .header-link {
-            justify-self: center;
-            align-self: center;
-            text-transform: capitalize;
-          }
 
           #github {
             grid-area: github;
@@ -46,6 +59,145 @@ html {
 
           #portfolio {
             grid-area: portfolio;
+
+            #resume-container {
+
+              #resume-border {
+                border: 2px solid black;
+                border-radius: 50%;
+                height: 35px;
+                width: 35px;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+
+                img {
+                  height: 30px;
+                  width: 30px;
+                  object-fit: cover;
+                  border-radius: 50%;
+                  border: 2px solid white;
+                }
+              }              
+            }
+          }
+        }
+
+        #search-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 250px 70px 70px;
+          grid-template-areas: 
+          ". logo ."
+          ". input-container ."
+          ". search-btn-container .";
+
+          #logo {
+            text-transform: capitalize;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 70px;
+            grid-area: logo;
+            justify-self: center;
+            align-self: end;
+          }
+
+          #input-container {
+            display: flex;
+            grid-area: input-container;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.080);
+            height: 30px;
+            margin-top: 5px;
+
+            .fa-search {
+              margin-left: 10px;
+              color: rgba(0, 0, 0, 0.080);
+            }
+            
+            #search-input {
+              grid-area: search-input;
+              width: 100%;
+              align-self: center;
+              margin-left: 5px;
+              border: none;
+              border-radius: 30px;
+              
+              &:focus {
+                border: none;
+                outline: none;
+                border-radius: 30px;
+              }
+            }
+
+            &:hover {
+              box-shadow: 1px 1px 6px rgb(180, 180, 180);
+            }
+          }
+
+          #search-btn-container {
+            grid-area: search-btn-container;
+            display: flex;
+            justify-self: center;
+            align-self: center;
+
+            .search-btns {
+              text-transform: capitalize;
+              border: none;
+              font-size: 15px;
+              color: #5F6368;
+              padding: 7px 15px 7px 15px;
+              border-radius: 3px;
+              border: 1px solid white;
+              min-width: 143px;
+              max-height: 33px;
+
+              &:hover {
+                border: 1px solid rgba(0, 0, 0, 0.230);
+                box-shadow: 1px 1px 5px rgb(168, 168, 168);
+              }
+            }
+
+            #scroople-search-btn {
+              margin-right: 5px;
+            }
+            
+            #feeling-lucky-btn {
+              margin-left: 5px;
+            }
+          }
+        }
+
+        #search-result {
+
+        }
+
+        footer {
+          display: grid;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          grid-template-columns: 160px 105px 110px 1fr 100px;
+          grid-template-rows: 50px;
+          grid-template-areas: "how-scroople-works composting food-storage . ipcc-report";
+          background-color: #f2f2f2;
+
+          #how-scroople-works {
+            grid-area: how-scroople-works;
+          }
+
+          #composting {
+            grid-area: composting;
+          }
+
+          #food-storage {
+            grid-area: food-storage;
+          }
+
+          #ipcc-report {
+            grid-area: ipcc-report;
           }
         }
       }
