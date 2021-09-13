@@ -132,7 +132,7 @@ html {
             }
 
             &:hover {
-              box-shadow: 1px 1px 6px rgb(180, 180, 180);
+              box-shadow: 1px 1px 2px rgb(200, 200, 200);
             }
           }
 
@@ -155,7 +155,7 @@ html {
 
               &:hover {
                 border: 1px solid rgba(0, 0, 0, 0.230);
-                box-shadow: 1px 1px 5px rgb(168, 168, 168);
+                box-shadow: 1px 1px 2px rgb(200, 200, 200);
               }
             }
 
@@ -175,7 +175,7 @@ html {
 
         footer {
           display: grid;
-          position: absolute;
+          position: fixed;
           bottom: 0;
           left: 0;
           right: 0;
