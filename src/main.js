@@ -16,7 +16,6 @@ searchInput.addEventListener('keypress', (e) => {
     // e.preventDefault();
     if (e.key === 'Enter') {
         searchQuery = searchInput.value;
-        // console.log(searchQuery);
         fetchSearchResults(searchQuery);
     }
 })
@@ -34,7 +33,6 @@ async function fetchSearchResults(searchQuery) {
         url: `/recipes/${searchQuery}`
     })
     .then(res => {
-        // console.log(res.data.results);
         generateResults(res.data.results)
     })
     .catch(err => console.log(err))
@@ -42,7 +40,7 @@ async function fetchSearchResults(searchQuery) {
 
 function generateResults(results) {
 
-    let generatedResults = `<p>About ${results.length} results (0.73 seconds)</p>`;
+    let generatedResults = `<p>About ${results.length} results (0.13 seconds)</p>`;
 
     results.forEach(result => {
         const resultItem = 

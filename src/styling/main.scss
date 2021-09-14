@@ -152,6 +152,7 @@ html {
               border: 1px solid white;
               min-width: 143px;
               max-height: 33px;
+              white-space: nowrap;
 
               &:hover {
                 border: 1px solid rgba(0, 0, 0, 0.230);
@@ -193,6 +194,9 @@ html {
                 color: #202124;
                 font-size: 14px;
                 margin: 0;
+                                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
   
               .title {
@@ -202,6 +206,9 @@ html {
                 margin: 0;
                 padding-top: 5px;
                 align-self: center;
+                                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
               }
   
               .summary {
