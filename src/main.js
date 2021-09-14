@@ -1,6 +1,5 @@
 import "./styling/main.scss";
-import { modalClick, closeModal } from "./modal";
-// import gmail from './gmail'
+import { modalClick, closeModal, clickOutside } from "./modal";
 // import axios from "axios";
 const axios = require('axios').default;
 
