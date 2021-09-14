@@ -86,7 +86,7 @@ html {
         #search-container {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
-          grid-template-rows: 250px 70px 70px;
+          grid-template-rows: 100px 70px 70px;
           grid-template-areas: 
           ". logo ."
           ". input-container ."
@@ -95,10 +95,11 @@ html {
           #logo {
             text-transform: capitalize;
             font-family: 'Urbanist', sans-serif;
-            font-size: 70px;
+            font-size: 80px;
+            font-weight: bold;
             grid-area: logo;
             justify-self: center;
-            align-self: end;
+            align-self: start;
           }
 
           #input-container {
