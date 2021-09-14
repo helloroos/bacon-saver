@@ -5,19 +5,10 @@ const axios = require('axios').default;
 
 const regeneratorRuntime = require("regenerator-runtime");
 
-// const searchForm = document.querySelector('.searchForm');
-// const filterForm = document.querySelector('.filterForm');
-// const filterInputDiv = document.querySelector('.filter-input-div');
-// const filterOptions = document.querySelector('.filter-options');
-// const filterSelect = document.querySelector('.filter-select');
-// const viewRecipeModal = document.getElementById('view-recipe-modal');
-// const modalBackdrop = document.getElementById('modal-backdrop');
-// const modal = document.querySelector('.modal');
-
 const searchInput = document.querySelector('#search-input');
 const searchResultsContainer = document.querySelector('#search-result-container');
 const searchResults = document.querySelector('#search-results');
-const scroopleSearch = document.querySelector('#scroople-search-btn');
+const scroopleSearchBtn = document.querySelector('#scroople-search-btn');
 
 let searchQuery = '';
 
@@ -28,6 +19,12 @@ searchInput.addEventListener('keypress', (e) => {
         // console.log(searchQuery);
         fetchSearchResults(searchQuery);
     }
+})
+
+scroopleSearchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    searchQuery = searchInput.value;
+    fetchSearchResults(searchQuery);
 })
 
 // FIRST GET REQUEST
@@ -63,12 +60,3 @@ function generateResults(results) {
 
     searchResults.innerHTML = generatedResults;
 }
-
-// function initButtons() {
-//     document.querySelector('.close-btn').addEventListener('click', () => {
-//         console.log('Close');
-//         closeModal();
-//     });
-// }
-
-// initButtons();
