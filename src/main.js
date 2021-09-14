@@ -1,4 +1,5 @@
 import "./styling/main.scss";
+import { feelingLucky } from "./lucky";
 // import gmail from './gmail'
 // import axios from "axios";
 const axios = require('axios').default;
