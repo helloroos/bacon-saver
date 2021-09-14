@@ -169,8 +169,66 @@ html {
           }
         }
 
-        #search-result {
+        #search-result-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
+          #search-results {
+            width: 760px;
+
+            .result {
+              width: 60%;
+              display: grid;
+              grid-template-rows: 20px 40px 20px 20px;
+              margin-top: 30px;
+              grid-template-areas: 
+              "url"
+              "title"
+              "summary"
+              "result-links";
+  
+              .url {
+                grid-area: url;
+                color: #202124;
+                font-size: 14px;
+                margin: 0;
+              }
+  
+              .title {
+                grid-area: title;
+                color: #1a0dab;
+                font-size: 20px;
+                margin: 0;
+                padding-top: 5px;
+                align-self: center;
+              }
+  
+              .summary {
+                grid-area: summary;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin: 0;
+                color: #4d5156;
+                line-height: 1.5;
+              }
+  
+              .result-links {
+                grid-area: result-links;
+                display: flex;
+                
+                p {
+                  margin: 5px 0 0 0;
+                  color: #4d5156;
+  
+                  &:first-child {
+                    margin-right: 10px;
+                  }
+                }
+              }
+            }
+          }
         }
 
         footer {
