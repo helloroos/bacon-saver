@@ -57,8 +57,8 @@
   <div id="outer-container">
     <div id="inner-container">
       <header>
-        <a href="#" id="logo" class="header-links">scroople</a>
-        <div id="input-container" class="header-links">
+        <a href="#" id="logo" class="header-links header-hidden">scroople</a>
+        <div id="input-container" class="header-links header-hidden">
           <i class="fas fa-search"></i>
           <input id="search-input" type="text">
         </div>
@@ -74,6 +74,20 @@
               alt="michelles-portfolio">
           </div>
         </a>
+
+        <!-- <div id="filter-container"> -->
+          <select name="meal-type" id="meal-type">
+            <option value="dinner">dinner</option>
+            <option value="lunch">lunch</option>
+            <option value="breakfast">breakfast</option>
+          </select>
+
+          <div id="exclude-container">
+            <i class="fas fa-ban"></i>
+            <input id="exclude-input" type="text" placeholder="Exclude these ingredients">
+          </div>
+        <!-- </div> -->
+
       </header>
 
       <div id="search-container">

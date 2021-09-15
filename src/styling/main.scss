@@ -45,28 +45,32 @@ html {
           }
         }
 
-                  #input-container {
+          #input-container {
             display: flex;
             grid-area: input-container;
             align-items: center;
-            justify-content: space-between;
             border-radius: 30px;
             border: 1px solid rgba(0, 0, 0, 0.080);
             height: 30px;
             margin-top: 5px;
 
-            .fa-search {
+            i {
               margin-left: 10px;
               color: rgba(0, 0, 0, 0.080);
             }
             
-            #search-input {
+            #search-input, #exclude-input {
               grid-area: search-input;
               width: 100%;
               align-self: center;
               margin-left: 5px;
               border: none;
               border-radius: 30px;
+
+              &::placeholder {
+                color: lightgray;
+                font-style: italic;
+              }
               
               &:focus {
                 border: none;
@@ -83,8 +87,15 @@ html {
         header {
           display: grid;
           grid-template-columns: 230px 150px 1fr 65px 70px 35px 60px;
-          grid-template-rows: 50px;
-          grid-template-areas: ". logo input-container github linkedin resume portfolio";
+          grid-template-rows: 50px 50px;
+          grid-template-areas: 
+          ". logo input-container github linkedin resume portfolio"
+          ". meal-type exclude-container . . . .";
+          /* border-bottom: 1px solid whitesmoke; */
+
+          .header-hidden {
+            /* visibility: hidden; */
+          }
 
           #logo {
             grid-area: logo;
@@ -92,10 +103,12 @@ html {
             font-weight: bold;
             font-size: 24px;
             color: black;
+            text-decoration: none;
           }
 
           #input-container {
-            grid-area: input-container;
+            width: 420px;
+
           }
 
           #github {
@@ -123,6 +136,28 @@ html {
               }              
             }
           }
+
+          /* #filter-container {
+            grid-area: filter-container; */
+
+            #meal-type {
+              grid-area: meal-type;
+              border-radius: 10px;
+              border: 1px solid rgba(0, 0, 0, 0.080);
+              padding: 0 0 0 5px;
+              height: 25px;
+              width: 100px;
+              justify-self: center;
+              align-self: start;
+            }
+
+            #input-container {
+              width: 300px;
+
+              #exclude-input {
+              }
+            }
+          /* } */
         }
 
         #search-container {

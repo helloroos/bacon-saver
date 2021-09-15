@@ -1,5 +1,6 @@
 import "./styling/main.scss";
 import { modalClick, closeModal, clickOutside } from "./modal";
+import { fetchFilteredSearchResults } from "./filter";
 // import axios from "axios";
 const axios = require('axios').default;
 
