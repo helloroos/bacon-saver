@@ -45,22 +45,21 @@ html {
           }
         }
 
-          #input-container {
+          #input-container, #exclude-container, #main-input-container {
             display: flex;
-            grid-area: input-container;
             align-items: center;
             border-radius: 30px;
             border: 1px solid rgba(0, 0, 0, 0.080);
             height: 30px;
             margin-top: 5px;
+            text-decoration: none;
 
             i {
               margin-left: 10px;
               color: rgba(0, 0, 0, 0.080);
             }
             
-            #search-input, #exclude-input {
-              grid-area: search-input;
+            #search-input, #exclude-input, #main-search-input {
               width: 100%;
               align-self: center;
               margin-left: 5px;
@@ -105,9 +104,15 @@ html {
             color: black;
             text-decoration: none;
           }
-
+          
           #input-container {
             width: 420px;
+            justify-self: start;
+            grid-area: input-container;
+
+            #search-input {
+              grid-area: search-input;
+            }
 
           }
 
@@ -137,27 +142,28 @@ html {
             }
           }
 
-          /* #filter-container {
-            grid-area: filter-container; */
+          #meal-type {
+            grid-area: meal-type;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.080);
+            padding: 0 0 0 5px;
+            height: 25px;
+            width: 100px;
+            justify-self: center;
+            align-self: start;
+          }
 
-            #meal-type {
-              grid-area: meal-type;
-              border-radius: 10px;
-              border: 1px solid rgba(0, 0, 0, 0.080);
-              padding: 0 0 0 5px;
-              height: 25px;
-              width: 100px;
-              justify-self: center;
-              align-self: start;
+          #exclude-container {
+            grid-area: exclude-container;
+            width: 300px;
+            align-self: start;
+            justify-self: start;
+            margin-top: 0;
+
+            #exclude-input {
+              grid-area: exclude-input;
             }
-
-            #input-container {
-              width: 300px;
-
-              #exclude-input {
-              }
-            }
-          /* } */
+          }
         }
 
         #search-container {
@@ -166,7 +172,7 @@ html {
           grid-template-rows: 100px 70px 70px;
           grid-template-areas: 
           ". logo ."
-          ". input-container ."
+          ". main-input-container ."
           ". search-btn-container .";
 
           #logo {
@@ -177,6 +183,14 @@ html {
             grid-area: logo;
             justify-self: center;
             align-self: start;
+          }
+
+          #main-input-container {
+            grid-area: main-input-container;
+
+            #main-search-input {
+              grid-area: main-search-input;
+            }
           }
 
           #search-btn-container {
