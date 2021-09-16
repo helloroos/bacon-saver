@@ -128,6 +128,8 @@ html {
             justify-self: start;
             grid-area: input-container;
             margin-top: 0;
+                          justify-self: start;
+              align-self: center;
 
             #search-input {
               grid-area: search-input;
