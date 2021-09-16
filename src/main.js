@@ -6,24 +6,26 @@ const axios = require('axios').default;
 
 const regeneratorRuntime = require("regenerator-runtime");
 
-const searchInput = document.querySelector('#main-search-input');
+const searchInput = document.querySelector('#search-input');
+const mainSearchInput = document.querySelector('#main-search-input');
+const searchContainer = document.querySelector('#search-container');
 const searchResultsContainer = document.querySelector('#search-result-container');
 const searchResults = document.querySelector('#search-results');
 const scroopleSearchBtn = document.querySelector('#scroople-search-btn');
 
 let searchQuery = '';
 
-searchInput.addEventListener('keypress', (e) => {
+mainSearchInput.addEventListener('keypress', (e) => {
     // e.preventDefault();
     if (e.key === 'Enter') {
-        searchQuery = searchInput.value;
+        searchQuery = mainSearchInput.value;
         fetchSearchResults(searchQuery);
     }
 })
 
 scroopleSearchBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    searchQuery = searchInput.value;
+    searchQuery = mainSearchInput.value;
     fetchSearchResults(searchQuery);
 })
 
@@ -57,5 +59,11 @@ function generateResults(results) {
         generatedResults += resultItem;
     });
 
+    // searchContainer.style.display = 'hidden';
+    searchContainer.classList.add('hidden');
+
     searchResults.innerHTML = generatedResults;
+    // searchContainer.innerHTML = generatedResults;
+
+    searchInput.placeholder = searchQuery;
 }

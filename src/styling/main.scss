@@ -58,6 +58,11 @@ html {
               margin-left: 10px;
               color: rgba(0, 0, 0, 0.080);
             }
+
+            .fa-times {
+              margin-right: 10px;
+              cursor: pointer;
+            }
             
             #search-input, #exclude-input, #main-search-input {
               width: 100%;
@@ -107,10 +112,6 @@ html {
           ". logo input-container github linkedin resume portfolio"
           ". meal-type filter-container filter . . .";
           border-bottom: 1px solid whitesmoke;
-
-          .header-hidden {
-            /* visibility: hidden; */
-          }
 
           #logo {
             grid-area: logo;
@@ -175,6 +176,11 @@ html {
             text-align-last: center;
             appearance: none;
             color: lightgray;
+            cursor: pointer;
+
+            &:hover {
+              box-shadow: 1px 1px 2px rgb(200, 200, 200);
+            }
           }
 
           #filter-container {
@@ -212,15 +218,13 @@ html {
 
                 label, input {
                   color: lightgray;
-                  border-color: lightgray;
-                      outline: none;
-
                 }
 
                 input {
                   margin: 0;
                   height: 10px;
                   width: 10px;
+                  cursor: pointer;
                 }
 
                 label {
@@ -308,15 +312,15 @@ html {
         }
 
         #search-result-container {
-          display: flex;
+          /*display: flex;
           justify-content: center;
-          align-items: center;
-          /* display: grid;
-          grid-template-columns: 300px 1fr 300px;
-          grid-template-areas: ". search results ."; */
+          align-items: center;*/
+          display: grid;
+          grid-template-columns: 200px 1fr 170px;
+          grid-template-areas: ". search-results .";
             
           #search-results {
-            /* grid-area: search-results; */
+            grid-area: search-results;
             width: 760px;
 
             .result {
@@ -347,7 +351,7 @@ html {
                 margin: 0;
                 padding-top: 5px;
                 align-self: center;
-                                white-space: nowrap;
+                white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
               }
@@ -367,7 +371,7 @@ html {
                 display: flex;
                 
                 p {
-                  margin: 5px 0 0 0;
+                  margin: 15px 0 0 0;
                   color: #4d5156;
   
                   &:first-child {
@@ -468,5 +472,17 @@ html {
         }
       }
     }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .visible {
+    visibility: visible;
   }
 }
