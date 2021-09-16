@@ -91,8 +91,6 @@ html {
             padding: 7px 15px 7px 15px;
             border-radius: 3px;
             border: 1px solid white;
-            min-width: 143px;
-            max-height: 33px;
             white-space: nowrap;
 
             &:hover {
@@ -128,8 +126,8 @@ html {
             justify-self: start;
             grid-area: input-container;
             margin-top: 0;
-                          justify-self: start;
-              align-self: center;
+            justify-self: start;
+            align-self: center;
 
             #search-input {
               grid-area: search-input;
@@ -239,7 +237,9 @@ html {
           #filter {
             grid-area: filter;
             font-size: 12px;
-            width: 50px;
+            width: 80px;
+            height: auto;
+            max-height: 33px;
           }
         }
 
@@ -278,6 +278,9 @@ html {
 
             #scroople-search-btn {
               margin-right: 5px;
+              width: auto;
+              height: auto;
+              max-height: 33px;
             }
             
             #feeling-lucky-btn {
@@ -285,6 +288,9 @@ html {
               white-space: nowrap;
               overflow: hidden;
               text-overflow: clip;
+              width: auto;
+              height: auto;
+              max-height: 33px;
 
               ul {
                 margin: 0;
