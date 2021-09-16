@@ -44,7 +44,6 @@ function fetchSearchResults(searchQuery) {
     // searchContainer.classList.add('hidden');
 
     searchInput.value = searchQuery;
-  // searchInput.placeholder = searchQuery;
 
     // hiddenHeaders.classList.remove('hiddenHeaders');
     visibility.forEach(ele => {
@@ -115,9 +114,130 @@ function generateResults(results) {
 }
 
 const tools = document.querySelector('#tools');
+const firstHeader = document.querySelector('#header');
+const secondHeader = document.querySelector('#header-tools');
+const secondSearchInput = document.querySelector('#search-input-2');
+let state = false;
 
-// tools.addEventListener('click', () => {
-//   // e.preventDefault();
-//   searchQuery = mainSearchInput.value;
-//   fetchSearchResults(searchQuery);
-// })
+tools.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log(e.target);
+  if (!state) {
+    state = true;
+    firstHeader.innerHTML = `<a href="#" id="logo" class="header-links">scroople</a>
+        <div id="input-filter-container">
+          <div id="input-container">
+            <i class="fas fa-search"></i>
+            <input id="search-input-2" type="text">
+            <i class="fas fa-times"></i>
+          </div>
+          <button id="tools">tools</button>
+        </div>
+        <a href="https://github.com/michelleroos" id="github" class="header-links" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/roosmichelle/" id="linkedin" class="header-links"
+          target="_blank">linkedin</a>
+        <a href="https://firebasestorage.googleapis.com/v0/b/scroople-25727.appspot.com/o/Michelle%20Roos%20-%20Resume.pdf?alt=media&token=04dc0414-21f1-4d24-af4e-5a49eceb3371"
+          id="resume" class="header-links" target="_blank" download><i class="far fa-file"></i></a>
+        <a href="#" id="portfolio" class="header-links" target="_blank">
+          <div id="resume-container">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/scroople-25727.appspot.com/o/profile.jpeg?alt=media&token=19f195d0-e512-4afa-9a96-be6e9193830d"
+              alt="michelles-portfolio">
+          </div>
+        </a>
+
+        <select name="meal-type" id="meal-type" class="meal-type">
+          <option disabled selected value> Meal type </option>
+          <option value="main course">main course</option>
+          <option value="soup">soup</option>
+          <option value="breakfast">breakfast</option>
+        </select>
+
+        <div id="filter-container">
+
+          <div id="exclude-container">
+            <i class="fas fa-ban"></i>
+            <input id="exclude-input" type="text" placeholder="Exclude these ingredients">
+          </div>
+
+          <div id="checkboxes">
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="vegan">
+              <label for="vehicle1"> vegan</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="vegetarian">
+              <label for="vehicle1"> vegetarian</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="gluten-free">
+              <label for="vehicle1"> gluten-free</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="ketogenic">
+              <label for="vehicle1"> keto</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="lacto-vegetarian">
+              <label for="vehicle1"> lacto-veggie</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="ovo-vegetarian">
+              <label for="vehicle1"> ovo-veggie</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="paleo">
+              <label for="vehicle1"> paleo</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="primal">
+              <label for="vehicle1"> primal</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="whole-30">
+              <label for="vehicle1"> whole-30</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diets" name="diets" value="pescetarian">
+              <label for="vehicle1"> pescetarian</label>
+            </div>
+          </div>
+        </div>
+
+        <button id="filter" class="btns"><i class="fas fa-filter"></i> filter</button>`;
+    secondSearchInput.value = searchQuery;
+  } else {
+    state = false;
+    firstHeader.innerHTML = `<a href="#" id="logo" class="header-links visibility">scroople</a>
+        <div id="input-filter-container">
+          <div id="input-container" class="visibility">
+            <i class="fas fa-search"></i>
+            <input id="search-input" type="text">
+            <i class="fas fa-times"></i>
+          </div>
+          <button id="tools" class="visibility">tools</button>
+        </div>
+        <a href="https://github.com/michelleroos" id="github" class="header-links" target="_blank">github</a>
+        <a href="https://www.linkedin.com/in/roosmichelle/" id="linkedin" class="header-links"
+          target="_blank">linkedin</a>
+        <a href="https://firebasestorage.googleapis.com/v0/b/scroople-25727.appspot.com/o/Michelle%20Roos%20-%20Resume.pdf?alt=media&token=04dc0414-21f1-4d24-af4e-5a49eceb3371"
+          id="resume" class="header-links" target="_blank" download><i class="far fa-file"></i></a>
+        <a href="#" id="portfolio" class="header-links" target="_blank">
+          <div id="resume-container">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/scroople-25727.appspot.com/o/profile.jpeg?alt=media&token=19f195d0-e512-4afa-9a96-be6e9193830d"
+              alt="michelles-portfolio">
+          </div>
+        </a>`;
+    searchInput.value = searchQuery;
+  }
+});
