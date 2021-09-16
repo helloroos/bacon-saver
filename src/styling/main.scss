@@ -97,6 +97,7 @@ html {
             border-radius: 3px;
             border: 1px solid white;
             white-space: nowrap;
+            cursor: pointer;
 
             &:hover {
               border: 1px solid rgba(0, 0, 0, 0.230);
@@ -168,7 +169,7 @@ html {
             border: 1px solid rgba(0, 0, 0, 0.080);
             padding: 0;
             height: 32px;
-            width: 85px;
+            width: auto;
             justify-self: center;
             align-self: start;
             text-transform: capitalize;
