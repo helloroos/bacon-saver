@@ -6,7 +6,7 @@ const axios = require('axios').default;
 
 const regeneratorRuntime = require("regenerator-runtime");
 
-const searchInput = document.querySelector('#search-input');
+const searchInput = document.querySelector('#main-search-input');
 const searchResultsContainer = document.querySelector('#search-result-container');
 const searchResults = document.querySelector('#search-results');
 const scroopleSearchBtn = document.querySelector('#scroople-search-btn');

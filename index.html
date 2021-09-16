@@ -75,20 +75,73 @@
           </div>
         </a>
 
-        <!-- <div id="filter-container"> -->
-          <select name="meal-type" id="meal-type">
-            <option value="dinner">dinner</option>
-            <option value="lunch">lunch</option>
-            <option value="breakfast">breakfast</option>
-          </select>
+        <select name="meal-type" id="meal-type">
+          <option value="dinner">dinner</option>
+          <option value="lunch">lunch</option>
+          <option value="breakfast">breakfast</option>
+        </select>
+        
+        <div id="filter-container">
 
           <div id="exclude-container">
             <i class="fas fa-ban"></i>
             <input id="exclude-input" type="text" placeholder="Exclude these ingredients">
           </div>
 
-          
-        <!-- </div> -->
+          <div id="checkboxes">
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet1" value="vegan">
+              <label for="vehicle1"> vegan</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet2" value="vegetarian">
+              <label for="vehicle1"> vegetarian</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet3" value="gluten-free">
+              <label for="vehicle1"> gluten-free</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet4" value="ketogenic">
+              <label for="vehicle1"> keto</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet5" value="lacto-vegetarian">
+              <label for="vehicle1"> lacto-veggie</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet6" value="ovo-vegetarian">
+              <label for="vehicle1"> ovo-veggie</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet7" value="paleo">
+              <label for="vehicle1"> paleo</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet8" value="primal">
+              <label for="vehicle1"> primal</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet9" value="whole-30">
+              <label for="vehicle1"> whole-30</label>
+            </div>
+
+            <div class="checkbox-container">
+              <input type="checkbox" id="diet1" name="diet10" value="pescetarian">
+              <label for="vehicle1"> pescetarian</label>
+            </div>
+          </div>
+        </div>
+        
+        <button id="filter" class="btns">filter</button>
 
       </header>
 
@@ -101,8 +154,8 @@
           <input id="main-search-input" type="text">
         </div>
         <div id="search-btn-container">
-          <button id="scroople-search-btn" class="search-btns">scroople search</button>
-          <button id="feeling-lucky-btn" class="search-btns">
+          <button id="scroople-search-btn" class="btns">scroople search</button>
+          <button id="feeling-lucky-btn" class="btns">
             <ul>
               <li>i'm feeling lucky</li>
               <li>i'm feeling vegan</li>
@@ -118,17 +171,6 @@
             </ul>
           </button>
         </div>
-        <!-- <i class="fa fa-search" aria-hidden="true"></i> -->
-        <!-- </form> -->
-        <!-- <form class="filterForm">
-                        <div class="filter-input-div">
-                        </div>
-                        <div class="filter-options">
-                        </div>
-                        <div class="filter-select">
-                        </div>
-                    </form> -->
-        <!-- </div> -->
       </div>
 
       <div id="search-result-container">

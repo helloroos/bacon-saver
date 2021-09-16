@@ -83,14 +83,32 @@ html {
             }
           }
 
+          .btns {
+            text-transform: capitalize;
+            border: none;
+            font-size: 15px;
+            color: #5F6368;
+            padding: 7px 15px 7px 15px;
+            border-radius: 3px;
+            border: 1px solid white;
+            min-width: 143px;
+            max-height: 33px;
+            white-space: nowrap;
+
+            &:hover {
+              border: 1px solid rgba(0, 0, 0, 0.230);
+              box-shadow: 1px 1px 2px rgb(200, 200, 200);
+            }
+          }
+
         header {
           display: grid;
-          grid-template-columns: 230px 150px 1fr 65px 70px 35px 60px;
-          grid-template-rows: 50px 50px;
+          grid-template-columns: 200px 110px 1fr 65px 70px 35px 60px;
+          grid-template-rows: 50px 32px 10px;
           grid-template-areas: 
           ". logo input-container github linkedin resume portfolio"
-          ". meal-type exclude-container . . . .";
-          /* border-bottom: 1px solid whitesmoke; */
+          ". meal-type filter-container filter . . .";
+          border-bottom: 1px solid whitesmoke;
 
           .header-hidden {
             /* visibility: hidden; */
@@ -109,6 +127,7 @@ html {
             width: 420px;
             justify-self: start;
             grid-area: input-container;
+            margin-top: 0;
 
             #search-input {
               grid-area: search-input;
@@ -144,25 +163,81 @@ html {
 
           #meal-type {
             grid-area: meal-type;
-            border-radius: 10px;
+            border-radius: 30px;
             border: 1px solid rgba(0, 0, 0, 0.080);
-            padding: 0 0 0 5px;
-            height: 25px;
-            width: 100px;
+            padding: 0;
+            height: 32px;
+            width: 85px;
             justify-self: center;
             align-self: start;
+            text-transform: capitalize;
+            text-align: center;
+            text-align-last: center;
+            appearance: none;
+            color: lightgray;
           }
 
-          #exclude-container {
-            grid-area: exclude-container;
-            width: 300px;
-            align-self: start;
-            justify-self: start;
-            margin-top: 0;
+          #filter-container {
+            display: grid;
+            grid-template-columns: 302px 1fr;
+            grid-template-areas: "exclude-container checkboxes";
+            grid-area: filter-container;
 
-            #exclude-input {
-              grid-area: exclude-input;
+            #exclude-container {
+              grid-area: exclude-container;
+              width: 300px;
+              align-self: start;
+              justify-self: start;
+              margin-top: 0;
+  
+              #exclude-input {
+                grid-area: exclude-input;
+              }
             }
+
+            #checkboxes {
+              grid-area: checkboxes;
+              font-size: 10px;
+              justify-self: center;
+              align-self: center;
+              margin: 3px 0 0 5px;
+              text-transform: capitalize;
+
+              .checkbox-container {
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                display: inline;
+                margin-left: 5px;
+
+                label, input {
+                  color: lightgray;
+                  border-color: lightgray;
+                      outline: none;
+
+                }
+
+                input {
+                  margin: 0;
+                  height: 10px;
+                  width: 10px;
+                }
+
+                label {
+                  height: 10px;
+                  vertical-align: top;
+                  position: relative;
+                  top: -1px;
+                  margin-left: 1px;
+                }
+              }
+            }
+          }
+
+          #filter {
+            grid-area: filter;
+            font-size: 12px;
+            width: 50px;
           }
         }
 
@@ -198,24 +273,6 @@ html {
             display: flex;
             justify-self: center;
             align-self: center;
-
-            .search-btns {
-              text-transform: capitalize;
-              border: none;
-              font-size: 15px;
-              color: #5F6368;
-              padding: 7px 15px 7px 15px;
-              border-radius: 3px;
-              border: 1px solid white;
-              min-width: 143px;
-              max-height: 33px;
-              white-space: nowrap;
-
-              &:hover {
-                border: 1px solid rgba(0, 0, 0, 0.230);
-                box-shadow: 1px 1px 2px rgb(200, 200, 200);
-              }
-            }
 
             #scroople-search-btn {
               margin-right: 5px;
