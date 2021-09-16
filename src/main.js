@@ -6,12 +6,15 @@ const axios = require('axios').default;
 
 const regeneratorRuntime = require("regenerator-runtime");
 
+const hiddenHeaders = document.querySelector('.header-hidden');
 const searchInput = document.querySelector('#search-input');
 const mainSearchInput = document.querySelector('#main-search-input');
 const searchContainer = document.querySelector('#search-container');
 const searchResultsContainer = document.querySelector('#search-result-container');
 const searchResults = document.querySelector('#search-results');
 const scroopleSearchBtn = document.querySelector('#scroople-search-btn');
+
+const visibility = document.querySelectorAll('.invisible');
 
 let searchQuery = '';
 
@@ -37,12 +40,21 @@ function fetchSearchResults(searchQuery) {
   })
   .then(res => {
     generateResults(res.data.results)
+    // searchContainer.style.display = 'hidden';
+    searchContainer.classList.add('hidden');
+
+    searchInput.value = searchQuery;
+  // searchInput.placeholder = searchQuery;
+
+    // hiddenHeaders.classList.remove('hiddenHeaders');
+    visibility.forEach(ele => {
+      ele.style.visibility = 'visible';
+    });
   })
   .catch(err => console.log(err))
 }
 
-
-
+// SECOND GET REQUEST //
 
 const filter = document.querySelector('#filter');
 let excludeInput = document.querySelector('#exclude-input');
@@ -60,13 +72,9 @@ filter.addEventListener('click', () => {
       diet.push(checkbox.value);
     }
   }
-  console.log(excludeQuery);
-  console.log(type);
-  console.log(diet);
   fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet);
 })
 
-// SECOND GET REQUEST
 function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
   console.log('inside the func');
   axios({
@@ -79,9 +87,7 @@ function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
     }
   })
   .then(res => {
-    console.log(res);
     generateResults(res.data.results)
-    console.log('after the req');
   })
   .catch(err => console.log(err))
 }
@@ -104,12 +110,6 @@ function generateResults(results) {
     generatedResults += resultItem;
   });
 
-  // searchContainer.style.display = 'hidden';
-  searchContainer.classList.add('hidden');
-
   searchResults.innerHTML = generatedResults;
-  // searchContainer.innerHTML = generatedResults;
-
-  searchInput.value = searchQuery;
-  // searchInput.placeholder = searchQuery;
+    // searchContainer.innerHTML = generatedResults;
 }

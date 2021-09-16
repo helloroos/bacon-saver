@@ -113,7 +113,7 @@ html {
           grid-template-areas: 
           ". logo input-filter-container github linkedin resume portfolio"
           ". meal-type filter-container filter . . .";
-          border-bottom: 1px solid whitesmoke;
+          /* border-bottom: 1px solid whitesmoke; */
 
           #logo {
             grid-area: logo;
