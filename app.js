@@ -28,6 +28,7 @@ app.get("/recipes/:searchQuery", (request, response) => {
     .then((res) => {
       response.send(res.data); // sends to frontend
     })
+    .catch(err => console.log(err))
   // .then((body) => {
   //     let results = JSON.parse(body);
   //     console.log(results); // logs to server
@@ -53,6 +54,7 @@ app.get("/recipes/:query/filter", (request, response) => {
     .then((res) => {
       response.send(res.data);
     })
+    .catch(err => console.log(err))
 });
 
 app.listen(PORT, () => {

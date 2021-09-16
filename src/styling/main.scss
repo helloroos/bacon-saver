@@ -98,6 +98,7 @@ html {
             border: 1px solid white;
             white-space: nowrap;
             cursor: pointer;
+            font-family: 'Roboto', arial, sans-serif;
 
             &:hover {
               border: 1px solid rgba(0, 0, 0, 0.230);
@@ -110,7 +111,7 @@ html {
           grid-template-columns: 200px 110px 1fr 65px 70px 35px 60px;
           grid-template-rows: 50px 32px 10px;
           grid-template-areas: 
-          ". logo input-container github linkedin resume portfolio"
+          ". logo input-filter-container github linkedin resume portfolio"
           ". meal-type filter-container filter . . .";
           border-bottom: 1px solid whitesmoke;
 
@@ -122,19 +123,50 @@ html {
             color: black;
             text-decoration: none;
           }
-          
-          #input-container {
-            width: 420px;
-            justify-self: start;
-            grid-area: input-container;
-            margin-top: 0;
-            justify-self: start;
-            align-self: center;
 
-            #search-input {
-              grid-area: search-input;
+          #input-filter-container{
+            grid-area: input-filter-container;
+            display: grid;
+            grid-template-columns: 422px 1fr;
+            grid-template-areas: "input-container tools";
+            
+            #input-container {
+              justify-self: start;
+              margin-top: 0;
+              justify-self: start;
+              align-self: center;
+              width: 420px;
+              grid-area: input-container;
+  
+              #search-input {
+                grid-area: search-input;
+              }
             }
 
+            #tools {
+              grid-area: tools;
+              font-size: 12px;
+              color: lightgray;
+              border: none;
+              width: 60px;
+              height: 30px;
+              background-color: white;
+              text-transform: capitalize;
+              margin-left: 15px;
+              align-self: center;
+              justify-self: start;
+              font-family: 'Roboto', arial, sans-serif;
+              font-size: 15px;
+              
+              &:hover {
+                background-color: whitesmoke;
+                border: 1px solid lightgray;
+                box-shadow: 1px 1px 2px rgb(200, 200, 200);
+                border-radius: 3px;
+                cursor: pointer;
+                color: #5F6368;
+              }
+            }
           }
 
           #github {

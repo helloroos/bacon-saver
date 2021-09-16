@@ -30,15 +30,15 @@ scroopleSearchBtn.addEventListener('click', (e) => {
 })
 
 // FIRST GET REQUEST
-async function fetchSearchResults(searchQuery) {
+function fetchSearchResults(searchQuery) {
   axios({
     method: 'GET',
     url: `/recipes/${searchQuery}`
   })
-    .then(res => {
-      generateResults(res.data.results)
-    })
-    .catch(err => console.log(err))
+  .then(res => {
+    generateResults(res.data.results)
+  })
+  .catch(err => console.log(err))
 }
 
 
@@ -67,7 +67,8 @@ filter.addEventListener('click', () => {
 })
 
 // SECOND GET REQUEST
-export async function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
+function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
+  console.log('inside the func');
   axios({
     method: 'GET',
     url: `/recipes/${searchQuery}/filter`,
@@ -78,13 +79,12 @@ export async function fetchFilteredSearchResults(searchQuery, excludeQuery, type
     }
   })
   .then(res => {
+    console.log(res);
     generateResults(res.data.results)
+    console.log('after the req');
   })
   .catch(err => console.log(err))
 }
-
-
-
 
 function generateResults(results) {
 
