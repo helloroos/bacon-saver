@@ -106,7 +106,7 @@ html {
             }
           }
 
-        header {
+        #header {
           display: grid;
           grid-template-columns: 200px 110px 1fr 65px 70px 35px 60px;
           grid-template-rows: 50px 32px 10px;
@@ -511,11 +511,7 @@ html {
     display: none;
   }
 
-  .invisible {
+  .visibility {
     visibility: hidden;
-  }
-
-  .visible {
-    visibility: visible;
   }
 }

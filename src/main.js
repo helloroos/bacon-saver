@@ -14,7 +14,7 @@ const searchResultsContainer = document.querySelector('#search-result-container'
 const searchResults = document.querySelector('#search-results');
 const scroopleSearchBtn = document.querySelector('#scroople-search-btn');
 
-const visibility = document.querySelectorAll('.invisible');
+const visibility = document.querySelectorAll('.visibility');
 
 let searchQuery = '';
 
@@ -40,8 +40,8 @@ function fetchSearchResults(searchQuery) {
   })
   .then(res => {
     generateResults(res.data.results)
-    // searchContainer.style.display = 'hidden';
-    searchContainer.classList.add('hidden');
+    searchContainer.style.display = "none";
+    // searchContainer.classList.add('hidden');
 
     searchInput.value = searchQuery;
   // searchInput.placeholder = searchQuery;
@@ -113,3 +113,11 @@ function generateResults(results) {
   searchResults.innerHTML = generatedResults;
     // searchContainer.innerHTML = generatedResults;
 }
+
+const tools = document.querySelector('#tools');
+
+// tools.addEventListener('click', () => {
+//   // e.preventDefault();
+//   searchQuery = mainSearchInput.value;
+//   fetchSearchResults(searchQuery);
+// })
