@@ -97,6 +97,7 @@ html {
             border-radius: 3px;
             border: 1px solid white;
             white-space: nowrap;
+            overflow: hidden;
             cursor: pointer;
             font-family: 'Roboto', arial, sans-serif;
 
@@ -138,6 +139,7 @@ html {
               align-self: center;
               width: 420px;
               grid-area: input-container;
+              box-shadow: 1px 1px 2px rgb(200, 200, 200);
   
               #search-input {
                 grid-area: search-input;
@@ -527,6 +529,10 @@ html {
   }
 
   .visibility {
+    visibility: hidden;
+  }
+
+  .filter-visibility {
     visibility: hidden;
   }
 }
