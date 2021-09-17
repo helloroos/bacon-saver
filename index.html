@@ -57,7 +57,7 @@
   <div id="outer-container">
     <div id="inner-container">
 
-      <header id="header">
+      <!-- <header id="header">
         <a href="#" id="logo" class="header-links visibility">scroople</a>
         <div id="input-filter-container">
           <div id="input-container" class="visibility">
@@ -80,9 +80,9 @@
           </div>
         </a>
 
-      </header>
+      </header> -->
 
-      <header id="header-tools" class="hidden">
+      <header id="header">
         <a href="#" id="logo" class="header-links">scroople</a>
         <div id="input-filter-container">
           <div id="input-container">
@@ -104,13 +104,6 @@
               alt="michelles-portfolio">
           </div>
         </a>
-
-        <select name="meal-type" id="meal-type" class="meal-type">
-          <option disabled selected value> Meal type </option>
-          <option value="main course">main course</option>
-          <option value="soup">soup</option>
-          <option value="breakfast">breakfast</option>
-        </select>
         
         <div id="filter-container">
 
@@ -119,7 +112,20 @@
             <input id="exclude-input" type="text" placeholder="Exclude these ingredients">
           </div>
 
-          <div id="checkboxes">
+          <select name="meal-type" id="meal-type" class="meal-type">
+            <option disabled selected value> meal type </option>
+            <option value="main course">main course</option>
+            <option value="soup">soup</option>
+            <option value="breakfast">breakfast</option>
+          </select>
+
+          <select name="diets" id="diets" class="diets">
+            <option disabled selected value> diet </option>
+            <option value="vegan">vegan</option>
+            <option value="vegetarian">vegetarian</option>
+          </select>
+
+          <!-- <div id="checkboxes">
             <div class="checkbox-container">
               <input type="checkbox" id="diets" name="diets" value="vegan">
               <label for="vehicle1"> vegan</label>
@@ -169,10 +175,12 @@
               <input type="checkbox" id="diets" name="diets" value="pescetarian">
               <label for="vehicle1"> pescetarian</label>
             </div>
-          </div>
+          </div> -->
+          
+          <button id="filter" class="btns"><i class="fas fa-filter"></i> filter</button>
+
         </div>
         
-        <button id="filter" class="btns"><i class="fas fa-filter"></i> filter</button>
 
       </header>
 

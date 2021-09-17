@@ -112,7 +112,7 @@ html {
           grid-template-rows: 50px 32px 10px;
           grid-template-areas: 
           ". logo input-filter-container github linkedin resume portfolio"
-          ". meal-type filter-container filter . . .";
+          ". . filter-container . . . .";
           /* border-bottom: 1px solid whitesmoke; */
 
           #logo {
@@ -196,31 +196,10 @@ html {
             }
           }
 
-          #meal-type {
-            grid-area: meal-type;
-            border-radius: 30px;
-            border: 1px solid rgba(0, 0, 0, 0.080);
-            padding: 0;
-            height: 32px;
-            width: 95px;
-            justify-self: start;
-            align-self: start;
-            text-transform: capitalize;
-            text-align: center;
-            text-align-last: center;
-            appearance: none;
-            color: lightgray;
-            cursor: pointer;
-
-            &:hover {
-              box-shadow: 1px 1px 2px rgb(200, 200, 200);
-            }
-          }
-
           #filter-container {
             display: grid;
-            grid-template-columns: 302px 1fr;
-            grid-template-areas: "exclude-container checkboxes";
+            grid-template-columns: 302px 100px 100px 1fr;
+            grid-template-areas: "exclude-container meal-type diets filter";
             grid-area: filter-container;
 
             #exclude-container {
@@ -233,6 +212,39 @@ html {
               #exclude-input {
                 grid-area: exclude-input;
               }
+            }
+
+            #meal-type, #diets {
+              grid-area: meal-type;
+              border-radius: 30px;
+              border: 1px solid rgba(0, 0, 0, 0.080);
+              padding: 0;
+              height: 32px;
+              width: 95px;
+              justify-self: start;
+              align-self: start;
+              text-transform: capitalize;
+              text-align: center;
+              text-align-last: center;
+              appearance: none;
+              color: lightgray;
+              cursor: pointer;
+
+              &:hover {
+                box-shadow: 1px 1px 2px rgb(200, 200, 200);
+              }
+            }
+
+                      #filter {
+            grid-area: filter;
+            font-size: 12px;
+            width: 80px;
+            height: auto;
+            max-height: 33px;
+          }
+
+            #diets {
+              grid-area: diets;
             }
 
             #checkboxes {
@@ -270,14 +282,6 @@ html {
                 }
               }
             }
-          }
-
-          #filter {
-            grid-area: filter;
-            font-size: 12px;
-            width: 80px;
-            height: auto;
-            max-height: 33px;
           }
         }
 
