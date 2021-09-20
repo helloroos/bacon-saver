@@ -4,7 +4,8 @@ const axios = require('axios').default;
 
 const regeneratorRuntime = require("regenerator-runtime");
 
-const searchInput = document.querySelector('#search-input');
+// const searchInput = document.querySelector('#search-input');
+const searchInput = document.getElementById('search-input');
 const mainSearchInput = document.querySelector('#main-search-input');
 const searchContainer = document.querySelector('#search-container');
 const searchResultsContainer = document.querySelector('#search-result-container');
@@ -12,7 +13,7 @@ const searchResults = document.querySelector('#search-results');
 const scroopleSearchBtn = document.querySelector('#scroople-search-btn');
 // const logo = document.getElementById('logo');
 // const inputFilterContainer = document.getElementById('input-filter-container');
-// const tools = document.getElementById('tools');
+const tools = document.getElementById('tools');
 // const tools = document.querySelector('#tools');
 // const firstHeader = document.querySelector('#header');
 // const secondHeader = document.querySelector('#header-tools');
@@ -37,6 +38,8 @@ mainSearchInput.addEventListener('keypress', (e) => {
     // fetchSearchResults();
   }
 })
+
+console.log(searchQuery);
 
 scroopleSearchBtn.addEventListener('click', (e) => {
   // e.preventDefault();
@@ -75,11 +78,15 @@ function fetchSearchResults(searchQuery) {
 
 let state = false;
 tools.addEventListener('click', (e) => {
+  console.log('click');
+  console.log(state);
   if (!state) {
     state = true;
+    console.log(state);
     document.getElementById('filter-container').classList.remove('visibility');
   } else {
     state = false;
+    console.log(state);
     document.getElementById('filter-container').classList.add('visibility');
   }
   searchInput.value = searchQuery;
