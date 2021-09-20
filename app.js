@@ -37,8 +37,8 @@ app.get("/recipes/:searchQuery", (request, response) => {
 });
 
 // route to get recipes based on filtered input
-app.get("/recipes/:query/filter", (request, response) => {
-  const searchQuery = request.params.query;
+app.get("/recipes/:searchQuery/filter", (request, response) => {
+  const searchQuery = request.params.searchQuery;
   const excludeQuery = request.params.excludeQuery;
   const type = request.params.type;
   const diet = request.params.diet;

@@ -20,8 +20,10 @@ const tools = document.getElementById('tools');
 // const secondSearchInput = document.querySelector('#search-input-2');
 
 
-const filter = document.querySelector('#filter');
-let excludeInput = document.querySelector('#exclude-input');
+// const filter = document.querySelector('#filter');
+const filter = document.getElementById('filter');
+// let excludeInput = document.querySelector('#exclude-input');
+let excludeInput = document.getElementById('exclude-input');
 // let searchQuery = document.querySelector('#search-input').value;
 const mealType = document.querySelector('#meal-type');
 const diets = document.querySelector('#diets');
@@ -38,8 +40,6 @@ mainSearchInput.addEventListener('keypress', (e) => {
     // fetchSearchResults();
   }
 })
-
-console.log(searchQuery);
 
 scroopleSearchBtn.addEventListener('click', (e) => {
   // e.preventDefault();
@@ -78,16 +78,12 @@ function fetchSearchResults(searchQuery) {
 
 let state = false;
 tools.addEventListener('click', (e) => {
-  console.log('click');
-  console.log(state);
   if (!state) {
     state = true;
-    console.log(state);
-    document.getElementById('filter-container').classList.remove('visibility');
+    document.querySelector('.filter-container').classList.remove('visibility');
   } else {
     state = false;
-    console.log(state);
-    document.getElementById('filter-container').classList.add('visibility');
+    document.querySelector('.filter-container').classList.add('visibility');
   }
   searchInput.value = searchQuery;
 });
@@ -99,12 +95,6 @@ filter.addEventListener('click', () => {
   let excludeQuery = excludeInput.value;
   let type = mealType.value;
   let diet = diets.value;
-  // let diet = [];
-  // for (const checkbox of diets) {
-  //   if (checkbox.checked) {
-  //     diet.push(checkbox.value);
-  //   }
-  // }
   fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet);
 })
 
@@ -114,17 +104,12 @@ excludeInput.addEventListener('keypress', (e) => {
   let type = mealType.value;
   let diet = diets.value;
   if (e.key === 'Enter') {
-    // let diet = [];
-    // for (const checkbox of diets) {
-    //   if (checkbox.checked) {
-    //     diet.push(checkbox.value);
-    //   }
-    // }
     fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet);
   }
 })
 
 function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
+  console.log('inside F');
   axios({
     method: 'GET',
     url: `/recipes/${searchQuery}/filter`,
@@ -135,6 +120,8 @@ function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
     }
   })
   .then(res => {
+    console.log('inside res');
+    console.log(res);
     generateResults(res.data.results)
   })
   .catch(err => console.log(err))
