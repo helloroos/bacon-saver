@@ -349,13 +349,10 @@ html {
               ul {
                 margin: 0;
                 padding: 0;
-                list-style-position: inside;
                 white-space: nowrap;
                 overflow: hidden;
-
-                li {
-
-                }
+                bottom: -135px;
+                width: 144px;
               }
             }
           }

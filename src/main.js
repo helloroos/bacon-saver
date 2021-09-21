@@ -4,13 +4,14 @@ const axios = require('axios').default;
 
 const regeneratorRuntime = require("regenerator-runtime");
 
-// const searchInput = document.querySelector('#search-input');
 const searchInput = document.getElementById('search-input');
 const mainSearchInput = document.querySelector('#main-search-input');
 const searchContainer = document.querySelector('#search-container');
 const searchResultsContainer = document.querySelector('#search-result-container');
 const searchResults = document.querySelector('#search-results');
 const scroopleSearchBtn = document.querySelector('#scroople-search-btn');
+const feelingLuckyBtn = document.getElementById('feeling-lucky-btn');
+const feelingLuckyList = document.getElementById('feeling-lucky-list');
 // const logo = document.getElementById('logo');
 // const inputFilterContainer = document.getElementById('input-filter-container');
 const tools = document.getElementById('tools');
@@ -28,7 +29,6 @@ let excludeInput = document.getElementById('exclude-input');
 const mealType = document.querySelector('#meal-type');
 const diets = document.querySelector('#diets');
 // const diets = document.querySelectorAll('input[name=diets]');
-
 
 let searchQuery = '';
 
@@ -48,9 +48,51 @@ scroopleSearchBtn.addEventListener('click', (e) => {
   // fetchSearchResults();
 })
 
+// feelingLuckyBtn.addEventListener('mouseover', (e) => {
+//   var pos = -((Math.floor((Math.random() * 11) + 1)) * 5 - 3) * 5;
+  
+//   if (pos === -135) {
+//     pos = -35;
+//   }
+
+//   feelingLuckyList
+
+
+// })
+
+// $('#search_btns button:nth-child(2)').hover(function () {
+
+//   btnTimeID = setTimeout(function () {
+
+//     // We are using the math object to randomly pick a number between 1 - 11, and then applying the formula (5n-3)5 to this number, which leaves us with a randomly selected number that is applied to the <ul> (i.e. -185) and corresponds to the position of a word (or <li> element, i.e. "I'm Feeling Curious").
+//     var pos = -((Math.floor((Math.random() * 11) + 1)) * 5 - 3) * 5;
+
+//     if (pos === -135) {
+//       console.log("position didn't change, let's force change")
+//       pos = -35;
+//     }
+
+//     $('#search_btns button:nth-child(2) ul').animate({ 'bottom': pos + 'px' }, 300);
+
+//     // Change the width of the button to fit the currently selected word.
+//     if (pos === -35 || pos === -110 || pos === -185 || pos === -10 || pos === -60 || pos === -160) {
+//       console.log(pos + ' = -35, -110, -185, -10, -60, -160');
+//       $('#search_btns button:nth-child(2)').css('width', '149px');
+//     } else if (pos === -85) {
+//       console.log(pos + ' = -85');
+//       $('#search_btns button:nth-child(2)').css('width', '160px');
+//     } else if (pos === -210) {
+//       console.log(pos + ' = -210');
+//       $('#search_btns button:nth-child(2)').css('width', '165px');
+//     } else {
+//       console.log(pos + ' = -260, -235');
+//       $('#search_btns button:nth-child(2)').css('width', '144px');
+//     }
+//   }, 200);
+// });
+
 // FIRST GET REQUEST
 function fetchSearchResults(searchQuery) {
-// function fetchSearchResults() {
   axios({
     method: 'GET',
     url: `/recipes/${searchQuery}`
@@ -58,15 +100,8 @@ function fetchSearchResults(searchQuery) {
   .then(res => {
     searchContainer.style.display = "none";
     generateResults(res.data.results)
-    // searchContainer.classList.add('hidden'); **
 
     searchInput.value = searchQuery;
-
-    // hiddenHeaders.classList.remove('hiddenHeaders'); **
-    // visibility.forEach(ele => { **
-    //   ele.style.visibility = 'visible';
-    // });
-    // document.getElementsByClassName('visibility').style.visibility = 'visible'; **
 
     document.getElementById('logo').classList.remove('visibility');
     document.getElementById('input-filter-container').classList.remove('visibility');
@@ -120,8 +155,6 @@ function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
     }
   })
   .then(res => {
-    console.log('inside res');
-    console.log(res);
     generateResults(res.data.results)
   })
   .catch(err => console.log(err))
@@ -146,5 +179,4 @@ function generateResults(results) {
   });
 
   searchResults.innerHTML = generatedResults;
-    // searchContainer.innerHTML = generatedResults;
 }
