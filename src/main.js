@@ -12,23 +12,17 @@ const searchResults = document.querySelector('#search-results');
 const scroopleSearchBtn = document.querySelector('#scroople-search-btn');
 const feelingLuckyBtn = document.getElementById('feeling-lucky-btn');
 const feelingLuckyList = document.getElementById('feeling-lucky-list');
-// const logo = document.getElementById('logo');
-// const inputFilterContainer = document.getElementById('input-filter-container');
 const tools = document.getElementById('tools');
-// const tools = document.querySelector('#tools');
-// const firstHeader = document.querySelector('#header');
-// const secondHeader = document.querySelector('#header-tools');
-// const secondSearchInput = document.querySelector('#search-input-2');
-
-
-// const filter = document.querySelector('#filter');
+const loaderContainer = document.getElementById('loader-container');
+const searchX = document.getElementById('search-x');
 const filter = document.getElementById('filter');
-// let excludeInput = document.querySelector('#exclude-input');
 let excludeInput = document.getElementById('exclude-input');
-// let searchQuery = document.querySelector('#search-input').value;
 const mealType = document.querySelector('#meal-type');
 const diets = document.querySelector('#diets');
-// const diets = document.querySelectorAll('input[name=diets]');
+
+// window.addEventListener('load', () => {
+//   loaderContainer.style.display = 'none';
+// })
 
 let searchQuery = '';
 
@@ -144,11 +138,11 @@ excludeInput.addEventListener('keypress', (e) => {
 })
 
 function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
-  console.log('inside F');
   axios({
     method: 'GET',
     url: `/recipes/${searchQuery}/filter`,
     params: {
+      searchQuery: searchQuery,
       excludeQuery: excludeQuery,
       type: type,
       diet: diet
@@ -160,9 +154,13 @@ function fetchFilteredSearchResults(searchQuery, excludeQuery, type, diet) {
   .catch(err => console.log(err))
 }
 
+searchX.addEventListener('click', function () {
+  searchInput.value = "";
+})
+
 function generateResults(results) {
 
-  let generatedResults = `<p>About ${results.length} results (0.13 seconds)</p>`;
+  let generatedResults = `<p>${results.length} results (0.13 seconds)</p>`;
 
   results.forEach(result => {
     const resultItem =
