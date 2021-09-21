@@ -486,8 +486,7 @@ html {
             align-items: center;
             flex-direction: column;
             position: relative;
-            white-space: nowrap;
-            overflow: hidden;
+            overflow: auto;
 
             .fa-times {
               position: absolute;
@@ -501,6 +500,8 @@ html {
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            height: 90%;
+            width: 90%;
 
               ol {
                 padding: 0 50px 0 50px;              
