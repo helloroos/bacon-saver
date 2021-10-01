@@ -42,17 +42,29 @@ scroopleSearchBtn.addEventListener('click', (e) => {
   // fetchSearchResults();
 })
 
-// feelingLuckyBtn.addEventListener('mouseover', (e) => {
-//   var pos = -((Math.floor((Math.random() * 11) + 1)) * 5 - 3) * 5;
+feelingLuckyBtn.addEventListener('mouseover', (e) => {
+  var pos = -((Math.floor((Math.random() * 11) + 1)) * 5 - 3) * 5;
+  let arr = []
   
-//   if (pos === -135) {
-//     pos = -35;
-//   }
+  if (pos === -116) {
+    // pos = -35;
+  }
 
-//   feelingLuckyList
+  // animate the ul ??
+  feelingLuckyList
+
+  if (pos === -24 || pos === -47 || pos === -70 || pos === -116) {
+    // make the width 130px
+  } else if (pos === -93 || -139) {
+    // make the width 145px
+  } else if (pos === -163 || -185) {
+    // make the width 155px
+  } else {
+    // make the width 190px
+  }
 
 
-// })
+})
 
 // $('#search_btns button:nth-child(2)').hover(function () {
 
