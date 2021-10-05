@@ -96,9 +96,6 @@ module.exports = {
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
         require("autoprefixer"),
-        new ExtractTextPlugin("style.css", {
-            allChunks: true
-        }),
         new HtmlWebpackPlugin()
     ],
 };
