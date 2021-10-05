@@ -1,8 +1,7 @@
-// webpack.common.js
-
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const outputDir = "./dist";
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, "src", "main.js"),
@@ -97,5 +96,9 @@ module.exports = {
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
         require("autoprefixer"),
+        new ExtractTextPlugin("style.css", {
+            allChunks: true
+        }),
+        new HtmlWebpackPlugin()
     ],
 };
