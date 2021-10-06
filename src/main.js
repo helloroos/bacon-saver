@@ -59,7 +59,7 @@ feelingLuckyBtn.addEventListener('mouseover', (e) => {
     // make the width 130px
   } else if (pos === -93 || -139) {
     // make the width 145px
-  } else if (pos === -163 || -185) {
+  } else if (pos === -164 || -185) {
     // make the width 155px
   } else {
     // make the width 190px
