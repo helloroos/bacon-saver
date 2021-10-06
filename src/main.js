@@ -20,6 +20,8 @@ let excludeInput = document.getElementById('exclude-input');
 const mealType = document.querySelector('#meal-type');
 const diets = document.querySelector('#diets');
 
+const app_key = require('../config/keys').app_key;
+
 // window.addEventListener('load', () => {
 //   loaderContainer.style.display = 'none';
 // })
@@ -101,7 +103,8 @@ feelingLuckyBtn.addEventListener('mouseover', (e) => {
 function fetchSearchResults(searchQuery) {
   axios({
     method: 'GET',
-    url: `/recipes/${searchQuery}`
+    // url: `/recipes/${searchQuery}`
+    url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
   })
   .then(res => {
     searchContainer.style.display = "none";
@@ -114,7 +117,25 @@ function fetchSearchResults(searchQuery) {
     document.getElementById('tools').classList.remove('visibility');
     
   })
-  .catch(err => console.log(err))
+  // .catch(err => console.log(err))
+    .catch(function (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
 }
 
 let state = false;
