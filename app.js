@@ -2,6 +2,7 @@
 
 const express = require("express");
 const app = express();
+const instance = axios.create({ baseURL: 'https://michelleroos.github.io/scroople' });
 const path = require("path");
 
 const axios = require('axios').default;
@@ -12,13 +13,14 @@ const PORT = process.env.PORT || 8000; // process.env accesses heroku's environm
 
 app.use(express.static("dist"));
 
+
 app.get("/", (request, response) => {
   // res.sendFile(path.join(__dirname, "./dist/index.html"));
   response.sendFile(path.join(__dirname, "index.html"));
 });
 
 // route to get recipes based on ingredient(s)
-app.get("/recipes/:searchQuery", (request, response) => {
+instance.get("/recipes/:searchQuery", (request, response) => {
   // make api call using axios
   const searchQuery = request.params.searchQuery;
   axios({
