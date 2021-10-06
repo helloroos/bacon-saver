@@ -103,7 +103,6 @@ feelingLuckyBtn.addEventListener('mouseover', (e) => {
 function fetchSearchResults(searchQuery) {
   axios({
     method: 'GET',
-    // url: `/recipes/${searchQuery}`
     url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=${app_key}&number=1000&addRecipeInformation=true&includeIngredients=${searchQuery}`
   })
   .then(res => {
